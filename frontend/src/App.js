@@ -16,7 +16,7 @@ import Ajoutreservation from './components/ajoutReservation/ajoutReservation';
 import AjoutSalle from'./components/ajoutsalle/AjoutSalle';
 import PageAccueil from "./components/page_accueil/page_accueil";
 import ListeUsers from './components/listeutilisateur/Liste';
-
+import Vf_agenda from './components/agenda/Vf_agenda';
 
 class App extends Component {
   constructor(props) {
@@ -53,6 +53,7 @@ class App extends Component {
         <div>         
           <Switch>
             <Route exact path="/" component={SignIn} />
+            <Route exact path="/agenda" component={Vf_agenda} />
             <Route exact path="/userAccount" component={User_account} />
             <Route exact path="/ajoutSalle" component={AjoutSalle} />
             <Route exact path="/users" component={ListeUsers} />
