@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const reservationSchema = new Schema(
     {
+        __id: {type: String},
         name: { type: String },
         salle: { type: String },
         startDateTime: { type: String },
@@ -11,5 +12,7 @@ const reservationSchema = new Schema(
     },
     { collection: "reservations", timestamps: true}
 );
+
+
 
 module.exports= mongoose.model("Reservation", reservationSchema);

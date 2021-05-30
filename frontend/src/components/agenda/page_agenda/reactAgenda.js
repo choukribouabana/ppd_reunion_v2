@@ -5,6 +5,7 @@ import ReactAgendaItem from './reactAgendaItem';
 import classNames from 'classnames';
 import {guid, getUnique, getLast, getFirst , mapItems} from './helpers.js';
 import * as DragDropHelper from './dragAndDropHelper.js';
+import axios from "axios";
 
 var startSelect
 
@@ -621,6 +622,9 @@ export default class ReactAgenda extends Component {
     if (this.props.onItemEdit) {
       this.props.onItemEdit(props, true);
     }
+    alert("heyyyyyyyyyyyyyyy");
+
+    axios.delete("http://localhost:8080/reservations/60b3b1911e5a4b3a4cf4f42a")
 
   }
 

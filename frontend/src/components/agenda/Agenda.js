@@ -217,12 +217,12 @@ this.setState({numberOfDays:days})
             ))
         }
         </div>*/}
-          <div>{
+          {/*<div>{
               this.state.items.map(item => (
                   <p>{item.startDateTime.toString()}</p>
               ))
           }
-          </div>
+          </div>*/}
           <div className="control-buttons">
           <button  className="button-control" onClick={this.zoomIn}> <i className="zoom-plus-icon"></i> </button>
           <button  className="button-control" onClick={this.zoomOut}> <i className="zoom-minus-icon"></i> </button>

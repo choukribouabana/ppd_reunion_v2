@@ -126,11 +126,7 @@ dispatchEvent(obj) {
         endDateTime: new Date(endT),
         classes: obj.classes
       }
-      axios.post("http://localhost:8080/reservations/", lasobj)
-          .then(res => {
-            console.log(res);
-            console.log(res.data);
-          })
+
       items.push(lasobj)
       newAdded.push(lasobj)
     }.bind(this));
