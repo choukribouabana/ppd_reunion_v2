@@ -622,9 +622,8 @@ export default class ReactAgenda extends Component {
     if (this.props.onItemEdit) {
       this.props.onItemEdit(props, true);
     }
-    alert("heyyyyyyyyyyyyyyy");
+    alert(props._id);
 
-    axios.delete("http://localhost:8080/reservations/60b3b1911e5a4b3a4cf4f42a")
 
   }
 
@@ -636,6 +635,8 @@ export default class ReactAgenda extends Component {
     if (this.props.onItemRemove) {
       this.props.onItemRemove(newItems, item);
     }
+    alert(item._id);
+    axios.delete("http://localhost:8080/reservations/"+ item._id);
   }
 
   render() {
