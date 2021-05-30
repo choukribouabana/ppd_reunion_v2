@@ -6,6 +6,7 @@ import { guid, getUnique , getLast , getFirst }  from "./page_agenda/helpers";
 import ReactAgenda from "./page_agenda/reactAgenda";
 import ReactAgendaCtrl from "./page_agenda/reactAgendaCtrl"
 import ModalView from "./page_agenda/Modal/Modal"
+import ReservationService from "../../services/reservation.service";
 var now = new Date();
 
 require('moment/locale/fr.js');
@@ -18,7 +19,7 @@ require('moment/locale/fr.js');
     }
 
 
-var items = [
+/*var items = [
   {
     name          : 'Meeting , dev staff!',
       salle : '1',
@@ -26,7 +27,7 @@ var items = [
     endDateTime   : "2021-05-30T13:57:11.633Z",
     classes       : 'color-1 color-4'
   }
-  /*,
+  ,
   {
    __id            :guid(),
     name          : 'Conference , plaza',
@@ -59,8 +60,8 @@ var items = [
     startDateTime : new Date(now.getFullYear(), now.getMonth(), now.getDate()+7, 9, 14),
     endDateTime   : new Date(now.getFullYear(), now.getMonth(), now.getDate()+7, 17),
     classes       : 'color-3'
-  }*/
-];
+  }
+];*/
 
 export default class Agenda extends Component {
   constructor(props){
@@ -94,11 +95,20 @@ this.handleCellSelection = this.handleCellSelection.bind(this)
   }
 
   componentDidMount(){
-
-    this.setState({items:items})
-
-
+      this.fetch();
   }
+    fetch = () => {
+        ReservationService.getlisteReservations().then(res => {
+            for (var i = 0; i < res.data.length; i++) {
+                res.data[i].startDateTime = new Date(res.data[i].startDateTime);
+                res.data[i].endDateTime = new Date(res.data[i].endDateTime);
+            }
+            this.setState({
+                items: res.data,
+                loaded: true,
+            });
+        });
+    }
 
 
 componentWillReceiveProps(next , last){
@@ -107,7 +117,7 @@ componentWillReceiveProps(next , last){
     this.setState({items:next.items})
   }
 }
-  handleItemEdit(item, openModal) {
+  handleItemEdit(item, openModal){
 
     if(item && openModal === true){
       this.setState({selected:[item] })
@@ -201,19 +211,19 @@ this.setState({numberOfDays:days})
     return (
 
       <div className="content-expanded ">
-        <div>{
+          {/*<div>{
             this.state.items.map(item => (
                 <p>{item.startDateTime}</p>
             ))
         }
-        </div>
+        </div>*/}
           <div>{
               this.state.items.map(item => (
-                  <p>{new Date(item.startDateTime).toString()}</p>
+                  <p>{item.startDateTime.toString()}</p>
               ))
           }
           </div>
-          {/*<div className="control-buttons">
+          <div className="control-buttons">
           <button  className="button-control" onClick={this.zoomIn}> <i className="zoom-plus-icon"></i> </button>
           <button  className="button-control" onClick={this.zoomOut}> <i className="zoom-minus-icon"></i> </button>
           <button  className="button-control" onClick={this._openModal}> <i className="schedule-icon"></i> </button>
@@ -247,7 +257,7 @@ this.setState({numberOfDays:days})
           onItemEdit={this.handleItemEdit.bind(this)}
           onCellSelect={this.handleCellSelection.bind(this)}
           onItemRemove={this.removeEvent.bind(this)}
-          onDateRangeChange={this.handleDateRangeChange.bind(this)} />*/}
+          onDateRangeChange={this.handleDateRangeChange.bind(this)} />
         {
           this.state.showModal? <ModalView clickOutside={this._closeModal} >
           <div className="modal-content">
