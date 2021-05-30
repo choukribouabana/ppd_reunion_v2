@@ -20,21 +20,13 @@ require('moment/locale/fr.js');
 
 var items = [
   {
-   __id            :guid(),
     name          : 'Meeting , dev staff!',
       salle : '1',
-    startDateTime : new Date(now.getFullYear(), now.getMonth(), now.getDate(), 10, 0),
-    endDateTime   : new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12, 0),
+    startDateTime : "2021-05-30T12:57:11.633Z",
+    endDateTime   : "2021-05-30T13:57:11.633Z",
     classes       : 'color-1 color-4'
-  },
-  {
-   __id            :guid(),
-    name          : 'Working lunch , Holly',
-      salle : '2',
-    startDateTime : new Date(now.getFullYear(), now.getMonth(), now.getDate()+1, 11, 0),
-    endDateTime   : new Date(now.getFullYear(), now.getMonth(), now.getDate()+1, 13, 0),
-    classes       : 'color-2'
-  },
+  }
+  /*,
   {
    __id            :guid(),
     name          : 'Conference , plaza',
@@ -67,7 +59,7 @@ var items = [
     startDateTime : new Date(now.getFullYear(), now.getMonth(), now.getDate()+7, 9, 14),
     endDateTime   : new Date(now.getFullYear(), now.getMonth(), now.getDate()+7, 17),
     classes       : 'color-3'
-  }
+  }*/
 ];
 
 export default class Agenda extends Component {
@@ -78,6 +70,7 @@ export default class Agenda extends Component {
 
 this.state = {
   items:[],
+    loaded: false,
   selected:[],
   cellHeight:(60 / 4),
   showModal:false,
@@ -208,8 +201,19 @@ this.setState({numberOfDays:days})
     return (
 
       <div className="content-expanded ">
-
-        <div className="control-buttons">
+        <div>{
+            this.state.items.map(item => (
+                <p>{item.startDateTime}</p>
+            ))
+        }
+        </div>
+          <div>{
+              this.state.items.map(item => (
+                  <p>{new Date(item.startDateTime).toString()}</p>
+              ))
+          }
+          </div>
+          {/*<div className="control-buttons">
           <button  className="button-control" onClick={this.zoomIn}> <i className="zoom-plus-icon"></i> </button>
           <button  className="button-control" onClick={this.zoomOut}> <i className="zoom-minus-icon"></i> </button>
           <button  className="button-control" onClick={this._openModal}> <i className="schedule-icon"></i> </button>
@@ -243,7 +247,7 @@ this.setState({numberOfDays:days})
           onItemEdit={this.handleItemEdit.bind(this)}
           onCellSelect={this.handleCellSelection.bind(this)}
           onItemRemove={this.removeEvent.bind(this)}
-          onDateRangeChange={this.handleDateRangeChange.bind(this)} />
+          onDateRangeChange={this.handleDateRangeChange.bind(this)} />*/}
         {
           this.state.showModal? <ModalView clickOutside={this._closeModal} >
           <div className="modal-content">

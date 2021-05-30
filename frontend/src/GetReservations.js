@@ -6,7 +6,6 @@ class GetReservations extends Component {
         super(props);
         this.state= {
             reservations : [],
-            selectedReservations: 0,
             loaded : false
         }
     }
@@ -16,7 +15,6 @@ class GetReservations extends Component {
 }
 
 fetch = () => {
-    this.updateSelectedReservation(0);
     ReservationService.getlisteReservations().then(res => {
         //console.log(res.data);
         this.setState({
@@ -24,11 +22,7 @@ fetch = () => {
             loaded : true, });
     });
 }
-    updateSelectedReservation = (index) => {
-        this.setState({
-            selectedReservations: index
-        })
-    }
+
     render() {
         return(
             <div>
