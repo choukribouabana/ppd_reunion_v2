@@ -5,6 +5,7 @@ import moment from 'moment';
 import {guid , getUnique , getLast , getFirst } from './helpers.js';
 import Rdate from 'react-datetime';
 import './reactAgendaCtrl.css';
+import axios from "axios";
 
 var now = new Date();
 
@@ -53,7 +54,7 @@ export default class ReactAgendaCtrl extends Component {
     return this.setState({editMode: false, name: '', salle: '', startDateTime: start, endDateTime: endT});
   }
 
-  if (this.props.selectedCells && this.props.selectedCells[0] && this.props.selectedCells[0]._id) {
+  if (this.props.selectedCells && this.props.selectedCells[0] && this.props.selectedCells[0].__id) {
 
     let start = moment(this.props.selectedCells[0].startDateTime);
     let endT = moment(this.props.selectedCells[0].endDateTime);
@@ -118,20 +119,30 @@ dispatchEvent(obj) {
       var start = newAr[0];
       var endT = newAr[newAr.length - 1] || now;
       var lasobj = {
-        _id: guid(),
+        __id: guid(),
         name: obj.name,
         salle: obj.salle,
         startDateTime: new Date(start),
         endDateTime: new Date(endT),
         classes: obj.classes
       }
+      axios.post("http://localhost:8080/reservations/", lasobj)
+          .then(res => {
+            console.log(res);
+            console.log(res.data);
+          })
       items.push(lasobj)
       newAdded.push(lasobj)
     }.bind(this));
     return this.props.Addnew(items, newAdded)
   }
 
-  obj._id = guid();
+  obj.__id = guid();
+  axios.post("http://localhost:8080/reservations/", obj)
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      })
   items.push(obj)
   this.props.Addnew(items, obj)
 }
@@ -168,15 +179,14 @@ addEvent(e) {
     endDateTime: new Date(this.state.endDateTime),
     classes: this.state.classes
   }
-
   this.dispatchEvent(newObj);
 }
 
 updateEvent(e) {
-  if (this.props.selectedCells[0]._id && this.props.items) {
+  if (this.props.selectedCells[0].__id && this.props.items) {
 
     var newObj = {
-      _id: this.props.selectedCells[0]._id,
+      __id: this.props.selectedCells[0].__id,
       name: this.state.name,
       salle: this.state.salle,
       startDateTime: new Date(this.state.startDateTime),
@@ -185,7 +195,7 @@ updateEvent(e) {
     }
     var items = this.props.items
     for (var i = 0; i < items.length; i++) {
-      if (items[i]._id === newObj._id)
+      if (items[i].__id === newObj.__id)
         items[i] = newObj;
       }
     if (this.props.edit) {
@@ -199,7 +209,19 @@ updateEvent(e) {
 
 handleSubmit(e) {
   e.preventDefault();
+  /*const reser = {
+    name: "bouabanachoukri",
+    salle: "4125"
+  };
+
+  axios.post("http://localhost:8080/reservations/", reser)
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      })*/
   this.addEvent(e);
+
+
 }
 
 handleEdit(e) {
@@ -295,6 +317,7 @@ render() {
       <div>
         <p>{this.state.name}</p>
         <p>{this.state.salle}</p>
+        <p>{this.state.startDateTime.toString()}</p>
       </div>
     </div>
   );

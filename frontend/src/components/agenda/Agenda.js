@@ -20,7 +20,7 @@ require('moment/locale/fr.js');
 
 var items = [
   {
-   _id            :guid(),
+   __id            :guid(),
     name          : 'Meeting , dev staff!',
       salle : '1',
     startDateTime : new Date(now.getFullYear(), now.getMonth(), now.getDate(), 10, 0),
@@ -28,7 +28,7 @@ var items = [
     classes       : 'color-1 color-4'
   },
   {
-   _id            :guid(),
+   __id            :guid(),
     name          : 'Working lunch , Holly',
       salle : '2',
     startDateTime : new Date(now.getFullYear(), now.getMonth(), now.getDate()+1, 11, 0),
@@ -36,7 +36,7 @@ var items = [
     classes       : 'color-2'
   },
   {
-   _id            :guid(),
+   __id            :guid(),
     name          : 'Conference , plaza',
       salle : '3',
     startDateTime : new Date(now.getFullYear(), now.getMonth(), now.getDate()+1, 11 , 0),
@@ -44,7 +44,7 @@ var items = [
     classes       : 'color-4'
   },
   {
-   _id            :'event-4',
+   __id            :'event-4',
     name          : 'Customers issues review',
       salle : '4',
     startDateTime : new Date(now.getFullYear(), now.getMonth(), now.getDate()+2, 10, 0),
@@ -53,7 +53,7 @@ var items = [
 
   },
   {
-    _id           :'event-5',
+    __id           :'event-5',
     name          : 'Group activity',
       salle : '5',
     startDateTime : new Date(now.getFullYear(), now.getMonth(), now.getDate()+3, 10, 0),
@@ -61,7 +61,7 @@ var items = [
     classes       : 'color-4'
   },
   {
-    _id           :'event-6',
+    __id           :'event-6',
     name          : 'Fun Day !',
       salle : '6',
     startDateTime : new Date(now.getFullYear(), now.getMonth(), now.getDate()+7, 9, 14),

@@ -106,12 +106,12 @@ export function mapItems(itemsArray, rowsPerHour, timezone) {
         : (item.classes || '');
       newItem.cellRefs = [getFirst(cellRefs), getLast(cellRefs)];
       if (itemsMap[ref]) {
-        if (itemsMap[ref]._id) {
+        if (itemsMap[ref].__id) {
           var newArr = [itemsMap[ref], newItem];
           itemsMap[ref] = newArr
           return
         }
-        if (itemsMap[ref][0] && !itemsMap[ref]._id) {
+        if (itemsMap[ref][0] && !itemsMap[ref].__id) {
           itemsMap[ref].push(newItem)
           return
         }

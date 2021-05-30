@@ -443,7 +443,7 @@ export default class ReactAgenda extends Component {
     var items = this.props.items
     if (id && date && items) {
       for (var i in items) {
-        if (items[i]._id === id) {
+        if (items[i].__id === id) {
           var start = moment(items[i].startDateTime);
           var end = moment(items[i].endDateTime);
           var duration = moment.duration(end.diff(start));
@@ -472,8 +472,8 @@ export default class ReactAgenda extends Component {
     var items = this.props.items
     if (id && date && items) {
       for (var i in items) {
-        if (items[i]._id === id) {
-          itm = Object.assign({} , items[i] , {_id:guid()} );
+        if (items[i].__id === id) {
+          itm = Object.assign({} , items[i] , {__id:guid()} );
           var start = moment(itm.startDateTime);
           var end = moment(itm.endDateTime);
           var duration = moment.duration(end.diff(start));
@@ -502,7 +502,7 @@ export default class ReactAgenda extends Component {
 
 
       for (var i in items ) {
-        if (items[i]._id === id) {
+        if (items[i].__id === id) {
           var difference = new Date(date) - new Date(items[i].startDateTime)
           if (difference < 1) {
             let strt = new Date(items[i].startDateTime)
@@ -627,7 +627,7 @@ export default class ReactAgenda extends Component {
   removeEvent(item) {
     var items = this.props.items;
     var newItems = items.filter(function(el) {
-      return el._id !== item._id;
+      return el.__id !== item.__id;
     });
     if (this.props.onItemRemove) {
       this.props.onItemRemove(newItems, item);
@@ -728,7 +728,7 @@ export default class ReactAgenda extends Component {
 
         if (first1 === cell.cellRef ) {
 
-          return <div id={item._id} ref={cell.cellRef} key={idx} className="dragDiv" onDragStart={this.onDragStart} onDragEnd={this.onDragEnd} draggable="true">
+          return <div id={item.__id} ref={cell.cellRef} key={idx} className="dragDiv" onDragStart={this.onDragStart} onDragEnd={this.onDragEnd} draggable="true">
 
             {first1 === cell.cellRef
               ? <i className="drag-handle-icon" aria-hidden="true"></i>
@@ -749,7 +749,7 @@ export default class ReactAgenda extends Component {
         if (last1 === cell.cellRef && this.props.onChangeDuration) {
           return <div className="handler" style={{
             marginLeft: 8 *(idx + 1) + 'px'
-          }} id={item._id} key={item._id} onDragStart={this.onDragHandlerStart} onDragEnd={this.onDragHandlerEnd} draggable="true">
+          }} id={item.__id} key={item.__id} onDragStart={this.onDragHandlerStart} onDragEnd={this.onDragHandlerEnd} draggable="true">
             <i className="resize-handle-icon"></i>
           </div>
         }
@@ -769,7 +769,7 @@ export default class ReactAgenda extends Component {
     }.bind(this);
 
     var renderMinuteCells = function(cell, i) {
-      if (cell.item[0] && !cell.item._id) {
+      if (cell.item[0] && !cell.item.__id) {
         return renderItemCells(cell, i)
       }
 
@@ -817,7 +817,7 @@ export default class ReactAgenda extends Component {
         <td ref={cell.cellRef} key={"cell-" + i} className={classSet} style={styles} id={cell.cellRef}>
 
           {first === cell.cellRef
-            ? <div id={cell.item._id} ref={cell.item._id} className="dragDiv" onDragStart={this.onDragStart} onDragEnd={this.onDragEnd} draggable="true">
+            ? <div id={cell.item.__id} ref={cell.item.__id} className="dragDiv" onDragStart={this.onDragStart} onDragEnd={this.onDragEnd} draggable="true">
 
                 {first === cell.cellRef && this.props.onChangeEvent
                   ? <i className="drag-handle-icon" aria-hidden="true"></i>
@@ -835,7 +835,7 @@ export default class ReactAgenda extends Component {
             : ''}
 
           {last === cell.cellRef && this.props.onChangeDuration
-            ? <div className="handler" id={cell.item._id} onDragStart={this.onDragHandlerStart} onDragEnd={this.onDragHandlerEnd} draggable="true">
+            ? <div className="handler" id={cell.item.__id} onDragStart={this.onDragHandlerStart} onDragEnd={this.onDragHandlerEnd} draggable="true">
                 <i className="resize-handle-icon"></i>
               </div>
 
