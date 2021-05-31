@@ -1,6 +1,6 @@
 const config = require("../config/auth.config");
 const db = require("../models");
-
+const middleware = require("../middlewares/isLogedIn");
 const User = db.user;
 const Role = db.role;
 var jwt = require("jsonwebtoken");
@@ -110,4 +110,23 @@ exports.signin = (req, res) => {
         accessToken: token
       });
     });
+};
+
+/*exports.signout= ( middleware.isLogedIn, (req, res)=>{
+  User.findById(req.user_id).then((rUser)=>{
+    rUser.online = false;
+    rUser.save();
+    });
+  //req.logout();
+  res.redirect("/");
+
+});**/
+exports.signout  = async(req, res, next) => {
+  res.cookie('token', 'none', {
+    httpOnly:true,
+  });
+  res.status(200).json({
+    success: true,
+   data: [],
+  });
 };

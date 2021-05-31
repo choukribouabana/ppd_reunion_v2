@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useContext } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -21,6 +21,8 @@ import {
   Switch
 } from "react-router-dom";
 import AdminPage from './AdminSearchAppBar';
+import userService from '../../services/user.service';
+import authService from '../../services/auth.service';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -131,7 +133,17 @@ export default function AdminSearchAppBar() {
     setAnchorElr(null);
   };
 
+
   const menuId = 'primary-search-account-menu';
+  /*const AuthContext = React.createContext({
+    isLoggedIn: false,
+    onLogout: () => {},
+  });
+  const authCtx = useContext(AuthContext);**/
+  const signOut =(e) =>{
+    e.preventDefault();
+   authService.logout();
+  }
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
@@ -144,7 +156,10 @@ export default function AdminSearchAppBar() {
     >
       
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Déconnexion</MenuItem> 
+     
+      
+      <button onClick={this.signOut}><link to="/" > Deconnexion </link></button> 
+      
     </Menu>
   );
 

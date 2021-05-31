@@ -16,8 +16,6 @@ import Ajoutreservation from './components/ajoutReservation/ajoutReservation';
 import AjoutSalle from'./components/ajoutsalle/AjoutSalle';
 import PageAccueil from "./components/page_accueil/page_accueil";
 import ListeUsers from './components/listeutilisateur/Liste';
-import Vf_agenda from './components/agenda/Vf_agenda';
-import GetReservations from "./GetReservations";
 
 
 class App extends Component {
@@ -55,8 +53,6 @@ class App extends Component {
         <div>         
           <Switch>
             <Route exact path="/" component={SignIn} />
-            <Route exact path="/res" component={GetReservations} />
-            <Route exact path="/agenda" component={Vf_agenda} />
             <Route exact path="/userAccount" component={User_account} />
             <Route exact path="/ajoutSalle" component={AjoutSalle} />
             <Route exact path="/users" component={ListeUsers} />
@@ -65,7 +61,7 @@ class App extends Component {
             <Route path="/listeReservation" component={ListeReservation} />
             <Route path="/home" component={PageAccueil} />
             <Route path="/signup" component={SignUp} />
-            
+            <Route path='/logout' />
            
           </Switch>
         </div>
