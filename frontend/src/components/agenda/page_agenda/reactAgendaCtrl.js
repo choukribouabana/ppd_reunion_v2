@@ -6,6 +6,7 @@ import {guid , getUnique , getLast , getFirst } from './helpers.js';
 import Rdate from 'react-datetime';
 import './reactAgendaCtrl.css';
 import axios from "axios";
+import AuthService from "../../../services/auth.service";
 
 var now = new Date();
 
@@ -144,6 +145,8 @@ dispatchEvent(obj) {
 }
 
 addEvent(e) {
+  const currentUser = AuthService.getCurrentUser();
+
   if (this.state.name.length < 1) {
     return;
   }
@@ -156,6 +159,7 @@ addEvent(e) {
       var newObj = {
         name: this.state.name,
         salle: this.state.salle,
+        idUser: currentUser.id,
         startDateTime: new Date(this.state.startDateTime),
         endDateTime: new Date(this.state.endDateTime),
         classes: this.state.classes,
@@ -171,6 +175,7 @@ addEvent(e) {
   var newObj = {
     name: this.state.name,
     salle: this.state.salle,
+    idUser: currentUser.id,
     startDateTime: new Date(this.state.startDateTime),
     endDateTime: new Date(this.state.endDateTime),
     classes: this.state.classes

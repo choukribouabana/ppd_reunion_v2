@@ -1,5 +1,6 @@
 import React, { Component  } from 'react';
 import ReservationService from "./services/reservation.service";
+import AuthService from "./services/auth.service"
 
 class GetReservations extends Component {
     constructor(props) {
@@ -24,8 +25,9 @@ fetch = () => {
 }
 
     render() {
+        const currentUser = AuthService.getCurrentUser();
         return(
-            <div>
+            /*<div>
                 {
                     this.state.reservations.map(reservation =>(
                         <div>
@@ -39,7 +41,15 @@ fetch = () => {
                     ))
 
                 }
+            </div>*/
+            <div>
+                <p>{JSON.stringify(currentUser)}</p>
+                <p>{currentUser.id}</p>
+                {/*<p>{currentUser._id}</p>
+                <p>{currentUser.password}</p>
+                <p>{currentUser.roles}</p>*/}
             </div>
+
         )
     }
 }

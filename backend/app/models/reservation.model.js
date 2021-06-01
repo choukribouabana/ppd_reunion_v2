@@ -6,6 +6,7 @@ const reservationSchema = new Schema(
         __id: {type: String},
         name: { type: String },
         salle: { type: String },
+            idUser: {type: String},
         startDateTime: { type: String },
         endDateTime: { type: String },
         classes: { type: String },

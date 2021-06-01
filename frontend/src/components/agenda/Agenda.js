@@ -7,6 +7,7 @@ import ReactAgenda from "./page_agenda/reactAgenda";
 import ReactAgendaCtrl from "./page_agenda/reactAgendaCtrl"
 import ModalView from "./page_agenda/Modal/Modal"
 import ReservationService from "../../services/reservation.service";
+import AuthService from "../../services/auth.service";
 var now = new Date();
 
 require('moment/locale/fr.js');
@@ -98,11 +99,21 @@ this.handleCellSelection = this.handleCellSelection.bind(this)
       this.fetch();
   }
     fetch = () => {
+      const currentUser = AuthService.getCurrentUser();
         ReservationService.getlisteReservations().then(res => {
+            var mm = 0;
+            for (var i = res.data.length -1; i >=0 ; i--){
+                if (res.data[i].idUser.localeCompare(currentUser.id)){
+                    res.data.splice(i, 1);
+                    mm ++;
+                }
+            }
+            alert(mm);
             for (var i = 0; i < res.data.length; i++) {
                 res.data[i].startDateTime = new Date(res.data[i].startDateTime);
                 res.data[i].endDateTime = new Date(res.data[i].endDateTime);
             }
+
             this.setState({
                 items: res.data,
                 loaded: true,
