@@ -113,8 +113,12 @@ export default class ReactAgendaCtrl extends Component {
       alert("inside");
       for (var i = res.data.length -1; i >=0 ; i--){
         if (Number(res.data[i].salle) === Number(obj.salle)){
-          boool = true;
-          alert("heyyyyyyy");
+          if(obj.startDateTime > new Date(res.data[i].startDateTime) &&
+          obj.startDateTime < new Date(res.data[i].endDateTime)) {
+            boool = true;
+            alert("This is already a booking from "+res.data[i].startDateTime.toString()+
+            " To : "+res.data[i].endDateTime.toString());
+          }
         }
       }
     })
