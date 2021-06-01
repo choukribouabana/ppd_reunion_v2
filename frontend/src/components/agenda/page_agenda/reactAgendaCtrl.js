@@ -7,6 +7,7 @@ import Rdate from 'react-datetime';
 import './reactAgendaCtrl.css';
 import axios from "axios";
 import AuthService from "../../../services/auth.service";
+import ReservationService from "../../../services/reservation.service";
 
 var now = new Date();
 
@@ -106,9 +107,28 @@ export default class ReactAgendaCtrl extends Component {
   this.setState(data);
 
   }
+  async fun1(obj){
+    var boool = false;
+    await ReservationService.getlisteReservations().then(res => {
+      alert("inside");
+      for (var i = res.data.length -1; i >=0 ; i--){
+        if (Number(res.data[i].salle) === Number(obj.salle)){
+          boool = true;
+          alert("heyyyyyyy");
+        }
+      }
+    })
+    return boool;
+  }
+  async fun2(obj){
+    axios.post("http://localhost:8080/reservations/", obj)
+        .then(res => {
+          console.log(res);
+          console.log(res.data);
+        })
+  }
 
-
-dispatchEvent(obj) {
+async dispatchEvent(obj) {
   var newAdded = []
   var items = this.props.items;
   if (obj['multiple']) {
@@ -135,13 +155,18 @@ dispatchEvent(obj) {
   }
 
   obj.__id = guid();
-  axios.post("http://localhost:8080/reservations/", obj)
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      })
-  items.push(obj)
-  this.props.Addnew(items, obj)
+
+  const bl = await this.fun1(obj);
+  if (!bl){
+    alert("mm");
+    await this.fun2(obj);
+    items.push(obj);
+    this.props.Addnew(items, obj);
+  }
+
+
+
+
 }
 
 addEvent(e) {
