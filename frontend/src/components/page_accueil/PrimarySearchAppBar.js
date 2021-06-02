@@ -138,7 +138,7 @@ export default function PrimarySearchAppBar() {
     </Menu>
   );
 
-  const menuIdr = 'primary-search-account-menur';
+  /*const menuIdr = 'primary-search-account-menur';
   const renderMenur = (
     <Menu
       anchorEl={anchorElr}
@@ -149,9 +149,7 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpenr}
       onClose={handleMenuCloser}
     >
-      <MenuItem onClick={handleMenuCloser}><Link to="/ajoutReservation">Créer réservation</Link></MenuItem>
-      <MenuItem onClick={handleMenuCloser}><Link to="/listeReservation">Supprimer réservation</Link></MenuItem>
-      <MenuItem onClick={handleMenuCloser}><Link to="/listeReservation">Liste des réservations</Link></MenuItem>
+      
     </Menu>
   );
 
@@ -166,65 +164,32 @@ export default function PrimarySearchAppBar() {
           open={isMenuOpenrr}
           onClose={handleMenuCloserr}
       >
-        <MenuItem onClick={handleMenuCloser}><Link to="/ajoutSalle">Créer une salle</Link></MenuItem>
-        <MenuItem onClick={handleMenuCloser}><Link to="/listeSalle">Supprimer une salle</Link></MenuItem>
-        <MenuItem onClick={handleMenuCloser}><Link to="/listeSalle">Liste des salles</Link></MenuItem>
+        
       </Menu>
-  );
+  );**/
 
   return (
-    <div className={classes.grow} >
-      <AppBar position="static" style={{backgroundColor:"#3f51b5", marginBottom:"50px"}}>
-        <Toolbar >
-          <IconButton
-              edge="start"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpenr}
-              color="inherit"
-            >
-              Reservations
-          </IconButton>
-          <IconButton
-              edge="start"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpenrr}
-              color="inherit"
-          >
-            Salles
-          </IconButton>
+    <div><ul>
+  <li><Link className=" text-white" to="/users">Utilisateurs</Link></li>
+  <li><Link className=" text-white" to="/listeSalle">Salles</Link></li>
+  <li><Link className=" text-white" to="/listeReservation">Réservations</Link></li>
+ 
+</ul></div>
 
-          <IconButton
-              edge="start"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              color="inherit"
-          >
-            <Link className=" text-white" to="/users">Users</Link>
-            
-          </IconButton>
-          <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-          </div>
-        </Toolbar>
-      </AppBar>
-      {renderMenurr}
-      {renderMenur}
-      {renderMenu}
-    </div>
+  /*
+  <div class="btn-toolbar text-center well">
+    <button type="button" class="btn btn-primary btn-color btn-bg-color btn-sm col-xs-2 margin-left">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"><Link className=" text-white" to="/users">Utilisateurs</Link></span> 
+    </button>
+    <button type="button" class="btn btn-primary btn-color btn-bg-color btn-sm col-xs-2 margin-left">
+      <span class="glyphicon glyphicon-edit" aria-hidden="true"> <Link className=" text-white" to="/listeSalle">Salles</Link> </span> 
+    </button>
+    <button type="button" class="btn btn-primary btn-color btn-bg-color btn-sm col-xs-2 margin-left">
+      <span class="glyphicon glyphicon-time" aria-hidden="true"><Link className=" text-white" to="/listeReservation">Reservations</Link></span> 
+    </button>
+    
+  </div>**/
+   
+   
   );
 }
