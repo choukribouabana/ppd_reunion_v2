@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, BrowserRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -18,6 +18,7 @@ import PageAccueil from "./components/page_accueil/page_accueil";
 import ListeUsers from './components/listeutilisateur/Liste';
 import Vf_agenda from './components/agenda/Vf_agenda';
 import GetReservations from "./GetReservations";
+import modifSalle from'./components/ajoutsalle/modifSalle';
 
 
 class App extends Component {
@@ -52,7 +53,8 @@ class App extends Component {
     const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
 
     return (
-        <div>         
+        <div>      
+           <BrowserRouter>
           <Switch>
             <Route exact path="/" component={SignIn} />
             <Route exact path="/res" component={GetReservations} />
@@ -65,9 +67,10 @@ class App extends Component {
             <Route path="/listeReservation" component={ListeReservation} />
             <Route path="/home" component={PageAccueil} />
             <Route path="/signup" component={SignUp} />
-            
-           
+            <Route path="/modif" component={modifSalle} />
           </Switch>
+          </BrowserRouter>
+
         </div>
     );
   }

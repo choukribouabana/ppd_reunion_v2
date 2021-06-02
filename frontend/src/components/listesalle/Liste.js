@@ -31,18 +31,19 @@ this.fetch();
   this.updateSelectedSalle(0);
   SallesService.getlistesalle().then(res => {
     //console.log(res.data);
-    this.setState({
+    this.setState({ 
     salles: res.data,
     loaded : true, });    
   });
 }
+
+
 
 updateSelectedSalle = (index) => {
  this.setState({
    selectedSalle: index
  }) 
 }
-
 
 
 render(){
@@ -53,7 +54,7 @@ render(){
     <div className="App d-flex flex-column">
      <Header/>
      { this.state.loaded ? (<div className="d-flex flex-row flex-fill pt-1 p-2">
-    <ListeSalle salles={this.state.salles} updateSelectedSalle={ this.updateSelectedSalle } fet= {this.fetch} />
+    <ListeSalle history={this.props.history} salles={this.state.salles}  updateSelectedSalle={ this.updateSelectedSalle } fet= {this.fetch}   />
     <DescSalle salle={this.state.salles[this.state.selectedSalle]}  />
     </div>
     

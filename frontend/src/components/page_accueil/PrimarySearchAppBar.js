@@ -14,6 +14,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import AuthService from "../../services/auth.service";
 import {
   BrowserRouter as Router,
   Route,
@@ -88,6 +89,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PrimarySearchAppBar() {
+
+  const  dec = () =>{
+    AuthService.logout();
+  }  
+
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorElr, setAnchorElr] = React.useState(null);
@@ -169,12 +175,14 @@ export default function PrimarySearchAppBar() {
   );**/
 
   return (
-    <div><ul>
+    <div className="">
+      <ul className="d-flex  w-100">
   <li><Link className=" text-white" to="/users">Utilisateurs</Link></li>
   <li><Link className=" text-white" to="/listeSalle">Salles</Link></li>
   <li><Link className=" text-white" to="/listeReservation">Réservations</Link></li>
- 
-</ul></div>
+  <li><Link className=" text-white float-left" onClick={dec}  to="/">Deconnexion</Link></li>            
+</ul>
+</div>
 
   /*
   <div class="btn-toolbar text-center well">

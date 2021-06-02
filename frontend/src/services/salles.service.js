@@ -14,6 +14,11 @@ class SallesService {
   supprimesalle(_id){
       return axios.delete('http://localhost:8080/salles/'+_id,{ headers: authHeader() });
   }
+  modifiesalle(_id,values){
+    return axios.put('http://localhost:8080/salles/'+_id, values,{ headers: authHeader() });
+ 
+  }
+
 }
 
 
