@@ -110,15 +110,17 @@ export default class ReactAgendaCtrl extends Component {
   async fun1(obj){
     var boool = false;
     await ReservationService.getlisteReservations().then(res => {
-      alert("inside");
       for (var i = res.data.length -1; i >=0 ; i--){
         if (Number(res.data[i].salle) === Number(obj.salle)){
-          if(obj.startDateTime > new Date(res.data[i].startDateTime) &&
-          obj.startDateTime < new Date(res.data[i].endDateTime)) {
+          if((obj.startDateTime > new Date(res.data[i].startDateTime) &&
+          obj.startDateTime < new Date(res.data[i].endDateTime)) || (obj.endDateTime > new Date(res.data[i].startDateTime) &&
+              obj.endDateTime < new Date(res.data[i].endDateTime)) || (obj.startDateTime < new Date(res.data[i].startDateTime) &&
+              obj.endDateTime > new Date(res.data[i].endDateTime))) {
             boool = true;
             alert("This is already a booking from "+res.data[i].startDateTime.toString()+
             " To : "+res.data[i].endDateTime.toString());
           }
+
         }
       }
     })
@@ -162,7 +164,6 @@ async dispatchEvent(obj) {
 
   const bl = await this.fun1(obj);
   if (!bl){
-    alert("mm");
     await this.fun2(obj);
     items.push(obj);
     this.props.Addnew(items, obj);
