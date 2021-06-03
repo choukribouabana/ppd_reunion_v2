@@ -94,6 +94,8 @@ componentDidUpdate(){
    this.modalWrapperTarget.removeEventListener('keydown' , this.clickedOutside);
     ReactDOM.unmountComponentAtNode(this.modalWrapperTarget);
     document.body.removeChild(this.modalWrapperTarget);
+    //window.location.reload(false);
+
   }
 
   render() {

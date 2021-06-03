@@ -178,6 +178,7 @@ _closeModal(e){
     e.preventDefault();
   }
     this.setState({showModal:false})
+    window.location.reload(false);
 }
 
 handleItemChange(items , item){

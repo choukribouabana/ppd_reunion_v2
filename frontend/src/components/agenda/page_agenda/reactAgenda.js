@@ -636,6 +636,7 @@ export default class ReactAgenda extends Component {
       this.props.onItemRemove(newItems, item);
     }
     alert(item._id);
+
     axios.delete("http://localhost:8080/reservations/"+ item._id);
   }
 

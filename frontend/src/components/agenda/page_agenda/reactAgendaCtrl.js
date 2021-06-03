@@ -33,8 +33,7 @@ export default class ReactAgendaCtrl extends Component {
     this.dispatchEvent = this.dispatchEvent.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleEdit = this.handleEdit.bind(this)
-    this.getSalle = this.getSalle.bind(this);
-  }
+ }
 
   componentDidMount() {
     SallesService.getlistesalle().then(res => {
@@ -267,18 +266,8 @@ handleEdit(e) {
   e.preventDefault();
   this.updateEvent(e);
 }
-/*{SallesService.getlistesalle().then(res =>{
-  res.data.map(item => {
-<div>
-<div>je usi</div>
-<div>{item.numsalle}</div>
-</div>*/
-getSalle(){
 
-  SallesService.getlistesalle().then(res => {
-    this.setState({listesalle: res})
-  })
-}
+
 
 render() {
   var itc = Object.keys(this.props.itemColors)
@@ -367,7 +356,7 @@ render() {
             <label>salle</label>
             <select name="salle" autoFocus ref="eventName" className="agendCtrls-event-input" value={this.state.salle} onChange={this.handleChangeSalle.bind(this)} placeholder="Salle">
               {this.state.listesalle.map(item => (
-                  <option className="agendCtrls-event-input" value={item.numsalle}>{item.numsalle}</option> ))
+                  <option className="agendCtrls-event-input" key={item.numsalle} value={item.numsalle}>{item.numsalle}</option> ))
               }
             </select>
           </div>
@@ -390,11 +379,7 @@ render() {
 
         <input type="submit" value="Save"/>
       </form>
-      <div>
-        <p>{this.state.name}</p>
-        <p>{this.state.salle}</p>
-        <p>{this.state.startDateTime.toString()}</p>
-      </div>
+
     </div>
   );
 }
