@@ -30,6 +30,7 @@ import Liste from "./components/listereservation/Liste";
 import ListeAdmin from "./components/listereservation/ListeAdmin";
 import ListeUser from "./components/listereservation/ListeUser";
 //import HomeAdmin from "./components/page_accueil/HomeAdmin";
+import Agenda from "./components/agenda/Agenda";
 
 
 class App extends Component {
@@ -79,6 +80,7 @@ class App extends Component {
             <Route exact path="/users" component={ListeUsers} />
 
             <Route exact path="/listeSalle" component={ListeSalle} />
+            <Route exact path="/agenda" component={Agenda} />
 
             { showAdminBoard ? (<Route path="/ajoutReservation" component={ajoutReservationAdmin} />) :(<Route path="/ajoutReservation" component={AjoutreservationUser} />)}
 
