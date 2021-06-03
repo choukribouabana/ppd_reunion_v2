@@ -6,7 +6,6 @@ import './Agenda.css';
 function Vf_agenda(){
     return(
         <div>
-            <PrimarySearchAppBar/>
             <Agenda/>
         </div>
     )
