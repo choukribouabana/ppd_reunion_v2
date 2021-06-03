@@ -5,11 +5,10 @@ import RessourceList from "./RessourceList";
 import FilterBar from "./FilterBar";
 import AdminSearchAppBar from "./AdminSearchAppBar";
 
-
 function HomeAdmin() {
   return (
     <div>
-          <AdminSearchAppBar/>
+          <AdminSearchAppBar />
           <div style={{overflow: "hidden"}}>
           <RessourceList />
           <FilterBar />
