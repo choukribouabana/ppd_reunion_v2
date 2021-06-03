@@ -17,7 +17,7 @@ export default class ListeSalle extends React.Component {
                      <th  className=" p-1 m-1  " >
                         Capacité 
                      </th>
-                     <th  className="p-1 m-1" >
+                     <th className="p-1 m-1" >
                         
                      </th>
                      

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, BrowserRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -73,27 +73,24 @@ class App extends Component {
     return (
         <div>  
 
+     <BrowserRouter>
           <Switch>
             <Route exact path="/" component={SignIn} />
-
-            {showAdminBoard ? (<Route exact path="/userAccount" component={User_accountAdmin} />) : (<Route exact path="/userAccount" component={User_accountUser} />)}
-            
-            {showAdminBoard ? (<Route exact path="/ajoutSalle" component={AjoutSalleAdmin} />) :(<Route exact path="/ajoutSalle" component={AjoutSalleUser} />)}
-
+            <Route exact path="/res" component={GetReservations} />
+            <Route exact path="/agenda" component={Vf_agenda} />
+            <Route exact path="/userAccount" component={User_account} />
+            <Route exact path="/ajoutSalle" component={AjoutSalle} />
             <Route exact path="/users" component={ListeUsers} />
-
             <Route exact path="/listeSalle" component={ListeSalle} />
-
-            { showAdminBoard ? (<Route path="/ajoutReservation" component={ajoutReservationAdmin} />) :(<Route path="/ajoutReservation" component={AjoutreservationUser} />)}
-
-            {showAdminBoard ? (<Route path="/listeReservation" component={ListeAdmin} />) : (<Route path="/listeReservation" component={ListeUser} />)}
-
-            {showAdminBoard ? (<Route path="/home" component={HomeAdmin} />) : (<Route path="/home" component={HomeUser} />) }
+            <Route path="/ajoutReservation" component={Ajoutreservation} />
+            <Route path="/listeReservation" component={ListeReservation} />
+            <Route path="/home" component={PageAccueil} />
             <Route path="/signup" component={SignUp} />
             <Route path="/modif" component={modifSalle} />
             <Route path="/modifUser" component={modifUser} />
           </Switch>
-        </div>
+          </BrowserRouter> 
+         </div>
     );
   }
 }
