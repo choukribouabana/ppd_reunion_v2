@@ -19,6 +19,7 @@ import ListeUsers from './components/listeutilisateur/Liste';
 import Vf_agenda from './components/agenda/Vf_agenda';
 import GetReservations from "./GetReservations";
 import modifSalle from'./components/ajoutsalle/modifSalle';
+import modifUser from'./components/modifUser';
 
 
 class App extends Component {
@@ -68,6 +69,7 @@ class App extends Component {
             <Route path="/home" component={PageAccueil} />
             <Route path="/signup" component={SignUp} />
             <Route path="/modif" component={modifSalle} />
+            <Route path="/modifUser" component={modifUser} />
           </Switch>
           </BrowserRouter>
 

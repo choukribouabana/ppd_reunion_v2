@@ -23,7 +23,7 @@ export default class ListeUtilisateur extends React.Component {
              </thead>
               <tbody>                               
              { this.props.users.map( (m , index) => (
-             <Utilisateur key= { m.name + index} user= { m } fet= {this.props.fet} updateSelectedUser={ () => {this.props.updateSelectedUser(index)} } /> 
+             <Utilisateur history={this.props.history} key= { m.name + index} user= { m } fet= {this.props.fet} updateSelectedUser={ () => {this.props.updateSelectedUser(index)} } /> 
              ))}  
              </tbody>
         </table>

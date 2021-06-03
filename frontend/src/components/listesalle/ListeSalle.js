@@ -11,13 +11,13 @@ export default class ListeSalle extends React.Component {
                      <th className=" p-1 m-1 ">
                         Numéro Salle 
                      </th>
-                     <th className=" p-1 m-1 ">
+                     <th  className=" p-1 m-1 ">
                         Etage 
                      </th>
                      <th  className=" p-1 m-1  " >
                         Capacité 
                      </th>
-                     <th colspan="1" className=" p-1 m-1  " >
+                     <th  className="p-1 m-1" >
                         
                      </th>
                      

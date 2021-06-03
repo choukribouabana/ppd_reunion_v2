@@ -13,7 +13,14 @@ export default class Utilisateur extends React.Component {
         });
         this.props.fet();
     }
-           
+    charger= () =>{
+        localStorage.setItem('util',JSON.stringify(this.props.user)); 
+        this.props.history.push("/modifUser");
+        window.location.reload();
+        console.log("zz");
+
+    }
+    
     mouseEnter = () => {
     this.props.updateSelectedUser(this.props.user.name);
 }
@@ -39,8 +46,8 @@ export default class Utilisateur extends React.Component {
                 </td>
                 <td className="p-1 m-1 bg-white col-sm-4  ">
                <div className="mx-4">
-               <button type="button" className="btn btn-outline-danger  btn-sm w-auto px-2 mx-2 " data-toggle="tooltip" data-placement="top"><BsTrash color="red" onClick={ this.delete }></BsTrash></button>
-               <button type="button" class="btn btn-outline-warning  btn-sm w-auto px-2 m-1 "><BiPencil color="orange"></BiPencil></button>
+               <button type="button" className="btn btn-outline-danger  btn-sm w-auto px-2 mx-2 " data-toggle="tooltip" data-placement="top" onClick={ this.delete }><BsTrash color="red" ></BsTrash></button>
+               <button type="button" class="btn btn-outline-warning  btn-sm w-auto px-2 m-1 "  onClick={this.charger} ><BiPencil color="orange"></BiPencil></button>
                <button type="button" class="btn btn-outline-primary  btn-sm w-auto px-1 mx-2 ">Liste des Réservations</button>
                </div>
                </td>

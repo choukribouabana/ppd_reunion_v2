@@ -18,7 +18,6 @@ return k;
             <div >
              <img alt="movie" className="mx-auto d-block w-75 " src= "https://img.icons8.com/bubbles/2x/user-male.png" />
             </div>
-            <hr className="w-100"/>
             <h6> INFORMATIONS</h6>
             <hr className="w-50"/>
             <span className="text-secondary p-1">AGE: {this.props.user.date } </span>
