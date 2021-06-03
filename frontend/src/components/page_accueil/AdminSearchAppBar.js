@@ -159,8 +159,8 @@ export default function AdminSearchAppBar() {
       open={isMenuOpenr}
       onClose={handleMenuCloser}
     >
-      <MenuItem onClick={handleMenuCloser}>Créer réservation</MenuItem>
-      <MenuItem onClick={handleMenuCloser}>Liste des réservations</MenuItem>
+      <MenuItem onClick={handleMenuCloser}><Link to="/ajoutReservation">Créer réservation</Link></MenuItem>
+      <MenuItem onClick={handleMenuCloser}><Link to="/listeReservation">Liste des réservations</Link></MenuItem>
     </Menu>
   );
 
@@ -175,9 +175,8 @@ export default function AdminSearchAppBar() {
       open={isMenuSalleOpen}
       onClose={handleMenuSalleClose}
     >
-      <MenuItem onClick={handleMenuSalleClose}>Créer salle</MenuItem>
-      <MenuItem onClick={handleMenuSalleClose}>Supprimer salle</MenuItem>
-      <MenuItem onClick={handleMenuSalleClose}>Liste des salles</MenuItem>
+      <MenuItem onClick={handleMenuSalleClose}><Link to="/ajoutSalle">Créer une salle</Link></MenuItem>
+      <MenuItem onClick={handleMenuSalleClose}><Link to="/listeSalle">Liste des salles</Link></MenuItem>
     </Menu>
   );
 
@@ -201,6 +200,16 @@ export default function AdminSearchAppBar() {
     <div className={classes.grow} >
       <AppBar position="static" style={{backgroundColor:"#3f51b5", marginBottom:"50px"}}>
         <Toolbar >
+        <IconButton
+              aria-label="account of current user"
+              aria-controls={menuUserId}
+              aria-haspopup="true"
+              onClick={handleProfileMenuUserOpen}
+              color="inherit"
+              style={{marginLeft:"50px"}}
+            >
+              <Link className=" text-white" to="/home">Acceuil</Link>
+          </IconButton>
           <IconButton
               edge="start"
               aria-label="account of current user"
@@ -229,7 +238,7 @@ export default function AdminSearchAppBar() {
               color="inherit"
               style={{marginLeft:"50px"}}
             >
-              Gestion des utilisateurs
+              <Link className=" text-white" to="/users">Utilisateurs</Link>
           </IconButton>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
@@ -248,7 +257,6 @@ export default function AdminSearchAppBar() {
       </AppBar>
       {renderMenur}
       {renderMenuSalle}
-      {renderMenuUser}
       {renderMenu}
     </div>
   );
