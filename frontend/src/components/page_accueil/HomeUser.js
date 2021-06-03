@@ -3,13 +3,13 @@ import Footer from './Footer';
 import Agenda from "./Agenda";
 import RessourceList from "./RessourceList";
 import FilterBar from "./FilterBar";
-import PrimarySearchAppBar from "./PrimarySearchAppBar";
+import UserSearchAppBar from "./UserSearchAppBar";
 
 
 function HomeUser() {
   return (
     <div>
-          <PrimarySearchAppBar/>
+          <UserSearchAppBar />
           <div style={{overflow: "hidden"}}>
           <RessourceList />
           <FilterBar />
