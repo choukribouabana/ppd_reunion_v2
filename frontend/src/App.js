@@ -80,7 +80,7 @@ class App extends Component {
             <Route exact path="/users" component={ListeUsers} />
 
             <Route exact path="/listeSalle" component={ListeSalle} />
-            <Route exact path="/agenda" component={Agenda} />
+            {/*<Route exact path="/agenda" component={Agenda} />*/}
 
             { showAdminBoard ? (<Route path="/ajoutReservation" component={ajoutReservationAdmin} />) :(<Route path="/ajoutReservation" component={AjoutreservationUser} />)}
 
