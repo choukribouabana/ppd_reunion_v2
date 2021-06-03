@@ -7,6 +7,7 @@ import Loading from './Loading';
 import axios from 'axios';
 import userService from '../../services/user.service';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import AdminSearchAppBar from '../page_accueil/AdminSearchAppBar';
 
 class Liste extends Component {
  constructor(props){
@@ -42,6 +43,7 @@ updateSelectedUser = (index) => {
 render(){
   return (
     <div className="App d-flex flex-column">
+      <AdminSearchAppBar />
         <div className="shadow-sm rounded  border mb-2 p-3 d-flex flex-row w-100 align-items-center bg-secondary ">
      <h5 className="p-1 col-sm-9 text-white"> Liste des utilisateurs </h5>
      <Link className="btn btn-info btn-sm text-white" to="/signup">Ajouter un utilisateur</Link>
