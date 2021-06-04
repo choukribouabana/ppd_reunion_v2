@@ -4,6 +4,7 @@ import Agenda from "../agenda/Vf_agenda";
 import RessourceList from "./RessourceList";
 import FilterBar from "./FilterBar";
 import UserSearchAppBar from "./UserSearchAppBar";
+import PrimarySearchAppBar from "./PrimarySearchAppBar";
 
 
 function HomeUser() {

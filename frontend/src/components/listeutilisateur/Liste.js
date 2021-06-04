@@ -8,6 +8,7 @@ import axios from 'axios';
 import userService from '../../services/user.service';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import AdminSearchAppBar from '../page_accueil/AdminSearchAppBar';
+import Footer from '../page_accueil/Footer';
 
 class Liste extends Component {
  constructor(props){
@@ -57,6 +58,7 @@ render(){
       <Loading />
     ) }
     
+      <Footer />
     </div>
   );
 }
