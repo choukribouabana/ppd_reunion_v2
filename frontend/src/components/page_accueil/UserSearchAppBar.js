@@ -213,7 +213,7 @@ export default function UserSearchAppBar() {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <MenuItem onClick={handleMenuClose} style={{textDecoration:"none", fontSize:"30px"}}>Déconnexion</MenuItem>
+              <Link className=" text-white" to="/" style={{textDecoration:"none", fontSize:"30px"}}>Déconnexion</Link>
             </IconButton>
           </div>
         </Toolbar>
