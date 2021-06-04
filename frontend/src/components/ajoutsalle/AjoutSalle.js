@@ -4,6 +4,7 @@ import { Formik, Field, ErrorMessage } from 'formik';
 import axios from 'axios';
 import * as Yup from 'yup';
 import PrimarySearchAppBar from "../page_accueil/PrimarySearchAppBar";
+import Footer from '../page_accueil/Footer';
 
 const mystyle={
     '&::after':{
@@ -245,6 +246,7 @@ return(
           )}
         </Formik>
       </div>
+      <Footer />
     </div>
 )
 

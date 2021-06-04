@@ -12,6 +12,7 @@ import PrimarySearchAppBar from "../page_accueil/PrimarySearchAppBar";
 import authHeader from '../../services/auth-header';
 import SallesService from '../../services/salles.service';
 import AdminSearchAppBar from '../page_accueil/AdminSearchAppBar';
+import Footer from '../page_accueil/Footer';
 
 
 
@@ -66,6 +67,7 @@ render(){
       <Loading />
     ) }
     </div>
+      <Footer />
     </div>
   );
 }

@@ -4,17 +4,17 @@ import Agenda from "../agenda/Vf_agenda";
 import RessourceList from "./RessourceList";
 import FilterBar from "./FilterBar";
 import UserSearchAppBar from "./UserSearchAppBar";
-import PrimarySearchAppBar from "./PrimarySearchAppBar";
+import UserNavBar from "./UserNavBar";
 
 
 function HomeUser() {
   return (
     <div>
-          <UserSearchAppBar />
         {/*<div style={{overflow: "hidden"}}>
           <RessourceList />
           <FilterBar />
           </div>*/}
+            <UserNavBar />
             <Agenda/>
           <Footer />
     </div>

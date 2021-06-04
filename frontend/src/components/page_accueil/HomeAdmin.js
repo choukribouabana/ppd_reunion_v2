@@ -4,16 +4,17 @@ import Agenda from "../agenda/Vf_agenda";
 import RessourceList from "./RessourceList";
 import FilterBar from "./FilterBar";
 import AdminSearchAppBar from "./AdminSearchAppBar";
+import PrimarySearchAppBar from "./PrimarySearchAppBar";
 
 function HomeAdmin() {
   return (
     <div>
-          <AdminSearchAppBar />
         {/*<div style={{overflow: "hidden"}}>
           <RessourceList />
           <FilterBar />
 
           </div>*/}
+            <PrimarySearchAppBar />
             <Agenda/>
           <Footer />
     </div>

@@ -4,9 +4,7 @@ import DescReservation from './DescReservation';
 import Reservation from './Reservation';
 import dataReservations from './data.js';
 import Loading from './Loading';
-import PrimarySearchAppBar from "../page_accueil/PrimarySearchAppBar";
-import AdminSearchAppBar from '../page_accueil/AdminSearchAppBar';
-import UserSearchAppBar from '../page_accueil/UserSearchAppBar';
+import UserNavBar from "../page_accueil/UserNavBar";
 import Footer from '../page_accueil/Footer';
 
 class Liste extends Component {
@@ -40,12 +38,12 @@ updateReservations(reservations){
 render(){
   return (
       <div>
-        <UserSearchAppBar />
+          <UserNavBar />
 
     <div className="App d-flex flex-column">
         <div className="shadow-sm rounded  border mb-2 p-3 d-flex flex-row w-100 align-items-center bg-secondary ">
      <h5 className="p-1 col-sm-9 text-white"> Liste des réservations </h5>
-  
+   
          </div>      
     
      { this.state.loaded ? (<div className="d-flex flex-row flex-fill pt-1 p-2">

@@ -20,7 +20,7 @@ import PageAccueil from "./components/page_accueil/page_accueil";
 import HomeAdmin from "./components/page_accueil/HomeAdmin";
 import HomeUser from "./components/page_accueil/HomeUser";
 import AdminSearchAppBar from "./components/page_accueil/AdminSearchAppBar"
-import UserSearchAppBar from "./components/page_accueil/UserSearchAppBar"
+import UserNavBar from "./components/page_accueil/UserNavBar";
 import ListeUsers from './components/listeutilisateur/Liste';
 import Vf_agenda from './components/agenda/Vf_agenda';
 import GetReservations from "./GetReservations";
@@ -36,6 +36,7 @@ import ListeAdmin from "./components/listereservation/ListeAdmin";
 import ListeUser from "./components/listereservation/ListeUser";
 //import HomeAdmin from "./components/page_accueil/HomeAdmin";
 import Agenda from "./components/agenda/Vf_agenda";
+import PrimarySearchAppBar from "./components/page_accueil/PrimarySearchAppBar";
 
 
 class App extends Component {
@@ -73,7 +74,7 @@ class App extends Component {
     console.log(this.state.currentUser);
 
     return (
-        <div>  
+        <div>            
 <BrowserRouter>
           <Switch>
             <Route exact path="/" component={SignIn} />
@@ -86,7 +87,8 @@ class App extends Component {
 
             <Route exact path="/listeSalle" component={ListeSalle} />
             <Route path="/ajoutReservation" component={Ajoutreservation} />
-            <Route path="/listeReservation" component={ListeReservation} />
+            {/*<Route path="/listeReservation" component={ListeReservation} />*/}
+            {showAdminBoard ? (<Route path="/listeReservation" component={ListeReservation} />) : (<Route path="/listeReservation" component={ListeUser} />)}
             <Route path="/modifUser" component={modifUser} />
             {/*<Route path="/home" component={PageAccueil} />*/}
             <Route path="/signup" component={SignUp} />
@@ -96,9 +98,7 @@ class App extends Component {
 
             { showAdminBoard ? (<Route path="/ajoutReservation" component={ajoutReservationAdmin} />) :(<Route path="/ajoutReservation" component={AjoutreservationUser} />)}
 
-            {showAdminBoard ? (<Route path="/listeReservation" component={ListeAdmin} />) : (<Route path="/listeReservation" component={ListeUser} />)}
-
-            {showAdminBoard ? (<Route path="/home" component={HomeAdmin} />) : (<Route path="/home" component={HomeUser} />) }
+            {showAdminBoard ? (<Route path="/home" component={HomeAdmin} />) : (<Route path="/home" component={HomeUser} />)}
             <Route path="/signup" component={SignUp} />
             
            
