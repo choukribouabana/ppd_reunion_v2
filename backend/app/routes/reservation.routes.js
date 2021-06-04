@@ -12,7 +12,7 @@ module.exports = function(app) {
         next();
     });
 
-    app.get("/reservations", (req, res, next) => {console.log("coucou");next()},[authJwt.verifyToken,authJwt.isAdmin] ,controller.getAll);
+    app.get("/reservations", (req, res, next) => {console.log("coucou");next()},controller.getAll);
     app.post("/reservations",controller.addOne);
     app.delete("/reservations",controller.deleteAll);
 

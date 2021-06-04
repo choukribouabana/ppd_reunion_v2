@@ -12,7 +12,7 @@ const { verifySalle } = require("../middlewares");
       next();
     });
   
-    app.get("/salles", (req, res, next) => {console.log("coucou");next()},[authJwt.verifyToken,authJwt.isAdmin] ,controller.getAll);
+    app.get("/salles", (req, res, next) => {console.log("coucou");next()} ,controller.getAll);
     app.post("/salles",[verifySalle.checkDuplicateSalle],controller.addOne);  
     app.delete("/salles",controller.deleteAll);
   
@@ -20,4 +20,3 @@ const { verifySalle } = require("../middlewares");
     app.put("/salles/:id",controller.updateOne);
     app.delete("/salles/:id",controller.deleteOne);
     };
-   
