@@ -68,7 +68,6 @@ export default class AjoutSalle extends React.Component{
 render(){   
 return(
     <div>
-        <PrimarySearchAppBar/>
 <div className="container-fluid pt-5  w-75  
       d-flex flex-column justify-content-center align-items-left ">
         <Formik onSubmit={(values, actions) => {

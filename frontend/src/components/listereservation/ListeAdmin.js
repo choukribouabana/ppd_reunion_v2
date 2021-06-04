@@ -6,6 +6,7 @@ import dataReservations from './data.js';
 import Loading from './Loading';
 import PrimarySearchAppBar from "../page_accueil/PrimarySearchAppBar";
 import AdminSearchAppBar from '../page_accueil/AdminSearchAppBar';
+import Footer from '../page_accueil/Footer';
 
 class Liste extends Component {
  constructor(props){
@@ -55,6 +56,7 @@ render(){
     ) }
     
     </div>
+     <Footer />
       </div>
   );
 }
