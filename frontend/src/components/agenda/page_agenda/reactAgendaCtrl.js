@@ -9,14 +9,16 @@ import axios from "axios";
 import AuthService from "../../../services/auth.service";
 import ReservationService from "../../../services/reservation.service";
 import SallesService from "../../../services/salles.service";
-
+import ReactAgenda from "./reactAgenda";
+import { testt } from "./reactAgenda";
 var now = new Date();
 
 
 export default class ReactAgendaCtrl extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
+      _id : this.props._id,
       listesalle: [],
       editMode: false,
       showCtrl: false,
@@ -33,8 +35,7 @@ export default class ReactAgendaCtrl extends Component {
     this.dispatchEvent = this.dispatchEvent.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleEdit = this.handleEdit.bind(this)
-    this.getSalle = this.getSalle.bind(this);
-  }
+ }
 
   componentDidMount() {
     SallesService.getlistesalle().then(res => {
@@ -221,9 +222,9 @@ addEvent(e) {
   this.dispatchEvent(newObj);
 }
 
-updateEvent(e) {
+async updateEvent(e) {
   if (this.props.selectedCells[0].__id && this.props.items) {
-
+    var index = 0;
     var newObj = {
       __id: this.props.selectedCells[0].__id,
       name: this.state.name,
@@ -234,12 +235,25 @@ updateEvent(e) {
     }
     var items = this.props.items
     for (var i = 0; i < items.length; i++) {
-      if (items[i].__id === newObj.__id)
-        items[i] = newObj;
+      if ((items[i].__id === newObj.__id)) {
+        items[i].__id = newObj.__id;
+        items[i].name = newObj.name;
+        items[i].salle = newObj.salle;
+        items[i].startDateTime = newObj.startDateTime;
+        items[i].endDateTime = newObj.endDateTime;
+        items[i].classes = newObj.classes;
+
+        index = i;
+      }
       }
     if (this.props.edit) {
       this.props.edit(items, newObj);
     }
+    await axios.put("http://localhost:8080/reservations/"+ items[index]._id, items[index]).then(res =>{
+      //alert(JSON.stringify(res));
+    })
+    //alert(JSON.stringify(items[index]));
+    //alert(items[index]._id)
 
   }
 
@@ -267,18 +281,8 @@ handleEdit(e) {
   e.preventDefault();
   this.updateEvent(e);
 }
-/*{SallesService.getlistesalle().then(res =>{
-  res.data.map(item => {
-<div>
-<div>je usi</div>
-<div>{item.numsalle}</div>
-</div>*/
-getSalle(){
 
-  SallesService.getlistesalle().then(res => {
-    this.setState({listesalle: res})
-  })
-}
+
 
 render() {
   var itc = Object.keys(this.props.itemColors)
@@ -301,20 +305,20 @@ render() {
 
       <div className="agendCtrls-wrapper" style={divStyle}>
         <form onSubmit={this.handleEdit}>
+          {/*<div>
+            {JSON.stringify(this.props.items[0])}
+          </div>*/}
           <div className="agendCtrls-label-wrapper">
             <div className="agendCtrls-label-inline">
               <label>Event name</label>
-              <select name="salle" autoFocus ref="eventName" className="agendCtrls-event-input" value={this.state.salle} onChange={this.handleChangeSalle.bind(this)} placeholder="Salle">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value={this.state.listesalle[0].numsalle}>{this.state.listesalle[0].numsalle}</option>
-              </select>
+              <input type="text" ref="eventName" autoFocus name="name" className="agendCtrls-event-input" value={this.state.name} onChange={this.handleChange.bind(this)} placeholder="Event Name"/>
             </div>
             <div className="agendCtrls-label-inline">
               <label>salle</label>
               <select name="salle" autoFocus ref="eventName" className="agendCtrls-event-input" value={this.state.salle} onChange={this.handleChangeSalle.bind(this)} placeholder="Salle">
+                <option value="0">Selectionner une salle</option>
                 {this.state.listesalle.map(item => (
-                    <option className="agendCtrls-event-input" value={item.numsalle}>{item.numsalle}</option> ))
+                    <option className="agendCtrls-event-input" key={item.numsalle} value={item.numsalle}>{item.numsalle}</option> ))
                 }
               </select>
             </div>
@@ -357,6 +361,9 @@ render() {
           ))
           JSON.stringify(this.state.listesalle[0])
         }</p>*/}
+        {/*<div>
+          {JSON.stringify(this.props.items[0])}
+        </div>*/}
 
         <div className="agendCtrls-label-wrapper">
           <div className="agendCtrls-label-inline">
@@ -366,8 +373,9 @@ render() {
           <div className="agendCtrls-label-inline">
             <label>salle</label>
             <select name="salle" autoFocus ref="eventName" className="agendCtrls-event-input" value={this.state.salle} onChange={this.handleChangeSalle.bind(this)} placeholder="Salle">
+              <option value="0">Selectionner une salle</option>
               {this.state.listesalle.map(item => (
-                  <option className="agendCtrls-event-input" value={item.numsalle}>{item.numsalle}</option> ))
+                  <option className="agendCtrls-event-input" key={item.numsalle} value={item.numsalle}>{item.numsalle}</option> ))
               }
             </select>
           </div>
@@ -390,11 +398,7 @@ render() {
 
         <input type="submit" value="Save"/>
       </form>
-      <div>
-        <p>{this.state.name}</p>
-        <p>{this.state.salle}</p>
-        <p>{this.state.startDateTime.toString()}</p>
-      </div>
+
     </div>
   );
 }

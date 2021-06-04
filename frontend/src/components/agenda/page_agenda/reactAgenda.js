@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import {guid, getUnique, getLast, getFirst , mapItems} from './helpers.js';
 import * as DragDropHelper from './dragAndDropHelper.js';
 import axios from "axios";
+import ReactAgendaCtrl from "./reactAgendaCtrl";
 
 var startSelect
 
@@ -35,6 +36,11 @@ var DEFAULT_ITEM = {
     };
     var element = null;
     var helper = null;
+
+    const testt = function(){
+  alert("hello");
+};
+    export {testt};
 
 
 export default class ReactAgenda extends Component {
@@ -624,6 +630,10 @@ export default class ReactAgenda extends Component {
     }
     alert(props._id);
 
+    /*axios.put("http://localhost:8080/reservations/"+ props._id, props).then(res =>{
+        alert(JSON.stringify(res));
+    })*/
+
 
   }
 
@@ -636,6 +646,7 @@ export default class ReactAgenda extends Component {
       this.props.onItemRemove(newItems, item);
     }
     alert(item._id);
+
     axios.delete("http://localhost:8080/reservations/"+ item._id);
   }
 

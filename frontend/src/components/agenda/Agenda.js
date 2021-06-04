@@ -178,6 +178,7 @@ _closeModal(e){
     e.preventDefault();
   }
     this.setState({showModal:false})
+    window.location.reload(false);
 }
 
 handleItemChange(items , item){
@@ -242,7 +243,9 @@ this.setState({numberOfDays:days})
           <button  className="button-control" onClick={this.changeView.bind(null , 3)}> {moment.duration(3, "days").humanize()}  </button>
           <button  className="button-control" onClick={this.changeView.bind(null , 1)}> {moment.duration(1, "day").humanize()} </button>
         </div>
-
+          {/*<div>
+              {JSON.stringify(this.state.items[0])}
+          </div>*/}
         <ReactAgenda
           minDate={new Date(now.getFullYear(), now.getMonth()-3)}
           maxDate={new Date(now.getFullYear(), now.getMonth()+3)}
