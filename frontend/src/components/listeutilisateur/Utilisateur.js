@@ -58,14 +58,14 @@ export default class Utilisateur extends React.Component {
                <div className="mx-4">
                <button type="button" className="btn btn-outline-danger  btn-sm w-auto px-2 mx-2 " data-toggle="tooltip" data-placement="top" onClick={ this.delete }><BsTrash color="red" ></BsTrash></button>
                <button type="button" class="btn btn-outline-warning  btn-sm w-auto px-2 m-1 "  onClick={this.charger} ><BiPencil color="orange"></BiPencil></button>
-               <button type="button" class="btn btn-outline-primary  btn-sm w-auto px-1 mx-2 ">Liste des Réservations</button>
+               <button type="button" class="btn btn-outline-primary  btn-sm w-auto px-1 mx-1 ">Liste des Réservations</button>
                </div>
                ) 
                : ( 
                <div className="mx-4">
                     <button type="button" className="btn btn-outline-secondary  btn-sm w-auto px-2 mx-2 " data-toggle="tooltip" data-placement="top" ><BiBody color="green" ></BiBody></button>
                <button type="button" class="btn btn-outline-warning  btn-sm w-auto  px-2 m-1 "  onClick={this.charger} ><BiPencil color="orange"></BiPencil></button>
-               <button type="button" class="btn btn-outline-primary  btn-sm w-auto px-1 mx-2 ">Liste des Réservations</button>
+               <button type="button" class="btn btn-outline-primary  btn-sm w-auto px-1 mx-1 ">Liste des Réservations</button>
   
               </div>)
                }

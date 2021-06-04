@@ -159,8 +159,8 @@ export default function AdminSearchAppBar() {
       open={isMenuOpenr}
       onClose={handleMenuCloser}
     >
-      <MenuItem onClick={handleMenuCloser}>Créer réservation</MenuItem>
-      <MenuItem onClick={handleMenuCloser}>Liste des réservations</MenuItem>
+      <MenuItem onClick={handleMenuCloser}><Link to="/ajoutReservation">Créer réservation</Link></MenuItem>
+      <MenuItem onClick={handleMenuCloser}><Link to="/listeReservation">Liste des réservations</Link></MenuItem>
     </Menu>
   );
 
@@ -175,9 +175,7 @@ export default function AdminSearchAppBar() {
       open={isMenuSalleOpen}
       onClose={handleMenuSalleClose}
     >
-      <MenuItem onClick={handleMenuSalleClose}>Créer salle</MenuItem>
-      <MenuItem onClick={handleMenuSalleClose}>Supprimer salle</MenuItem>
-      <MenuItem onClick={handleMenuSalleClose}>Liste des salles</MenuItem>
+    
     </Menu>
   );
 
@@ -199,8 +197,18 @@ export default function AdminSearchAppBar() {
 
   return (
     <div className={classes.grow} >
-      <AppBar position="static" style={{backgroundColor:"#3f51b5", marginBottom:"50px"}}>
+      <AppBar position="static" style={{backgroundColor:"#282d32", marginBottom:"50px", fontFamily:"Arial, Helvetica, sans-serif"}}>
         <Toolbar >
+        <IconButton
+              aria-label="account of current user"
+              aria-controls={menuUserId}
+              aria-haspopup="true"
+              onClick={handleProfileMenuUserOpen}
+              color="inherit"
+              style={{marginLeft:"30px"}}
+            >
+              <Link className=" text-white" to="/home" style={{textDecoration:"none", fontSize:"30px"}}>Acceuil</Link>
+          </IconButton>
           <IconButton
               edge="start"
               aria-label="account of current user"
@@ -208,8 +216,9 @@ export default function AdminSearchAppBar() {
               aria-haspopup="true"
               onClick={handleProfileMenuOpenr}
               color="inherit"
+              style={{marginLeft:"30px"}}
             >
-              Gestion des Reservations
+              <Link className=" text-white" to="/listeReservation" style={{textDecoration:"none", fontSize:"30px"}}>Reservations</Link>
           </IconButton>
           <IconButton
               aria-label="account of current user"
@@ -217,9 +226,9 @@ export default function AdminSearchAppBar() {
               aria-haspopup="true"
               onClick={handleProfileMenuSalleOpen}
               color="inherit"
-              style={{marginLeft:"50px"}}
+              style={{marginLeft:"30px"}}
             >
-              Gestion des salles
+              <Link className=" text-white" to="/listeSalle" style={{textDecoration:"none", fontSize:"30px"}}>Salles</Link>
           </IconButton>
           <IconButton
               aria-label="account of current user"
@@ -227,12 +236,22 @@ export default function AdminSearchAppBar() {
               aria-haspopup="true"
               onClick={handleProfileMenuUserOpen}
               color="inherit"
-              style={{marginLeft:"50px"}}
+              style={{marginLeft:"30px"}}
             >
-              Gestion des utilisateurs
+              <Link className=" text-white" to="/users" style={{textDecoration:"none", fontSize:"30px"}}>Utilisateurs</Link>
           </IconButton>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
+          <IconButton
+              edge="start"
+              aria-label="account of current user"
+              aria-controls={menuId}
+              aria-haspopup="true"
+              onClick={handleProfileMenuOpenr}
+              color="inherit"
+            >
+              <Link className=" text-white" to="/userAccount" style={{textDecoration:"none", fontSize:"30px"}}>Profile</Link>
+          </IconButton>
             <IconButton
               edge="end"
               aria-label="account of current user"
@@ -241,14 +260,13 @@ export default function AdminSearchAppBar() {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle />
+              <Link className=" text-white" to="/" style={{textDecoration:"none", fontSize:"30px"}}>Déconnexion</Link>
             </IconButton>
           </div>
         </Toolbar>
       </AppBar>
       {renderMenur}
       {renderMenuSalle}
-      {renderMenuUser}
       {renderMenu}
     </div>
   );

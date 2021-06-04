@@ -27,7 +27,7 @@ const ComposantErreur = props => (
   }) => (
     <div className="row form-group p-1">
       <label className="col-sm-3 d-inline w-25  "> { props.label } </label>
-      <input type="number" {...props} className="col-sm-3 w-25 " {...field} />
+      <input  {...props} className="col-sm-3 w-25 " {...field} />
     </div>
   );
     
@@ -40,19 +40,27 @@ const ComposantErreur = props => (
       <label className="col-sm-3 d-inline w-25 " id="lab" > { props.label } </label>  
       <div className="col-sm-3 d-inline w-25  ">
       <label className="col-sm-3 d-inline w-25  ">  
-      <input type="radio" {...props} className="col-sm-3 w-25 " {...field} />
+      <input type="radio" {...props} value="false" className="col-sm-3 w-25 " {...field} />
       { props.ch1 }
       </label>
       <label className="col-sm-3 d-inline w-25  ">  
-      <input type="radio" {...props} className="col-sm-3 w-25 " {...field} />
+      <input type="radio" {...props} value="false" className="col-sm-3 w-25 " {...field} />
       { props.ch2 }
       </label>
       </div>
     </div>
   );
 
-
 export default class AjoutSalle extends React.Component{
+constructor(props) {
+    super(props);
+
+    this.state = {
+      successful: false,
+      message: ""
+    };
+  }
+
 
 
 
@@ -60,9 +68,7 @@ export default class AjoutSalle extends React.Component{
         numsalle: Yup.number().required('champ Requis').positive('le numéro doit etre positif').integer('le numéro doit etre entier'),
         etage:  Yup.number().required('champ Requis').positive('le numéro doit etre positif').integer('le numéro doit etre entier'),
         capacite: Yup.number().required('champ Requis').positive('le numéro doit etre positif').integer('le numéro doit etre entier'),
-      /*  Handicap: Yup.string().required('faite un choix'),
-        Equipement: Yup.string().required('faite un choix'),*/
-        
+        Organisation: Yup.string().required('champ Requis')   
       });
        
 render(){   
@@ -80,7 +86,8 @@ return(
          this.setState({
             message: response.data.message,
             successful: true
-          });        setTimeout( () => {
+          });
+        setTimeout( () => {
           this.props.history.push("/listeSalle");
        // window.location.reload();
         
@@ -95,13 +102,13 @@ return(
             error.toString();
             actions.resetForm();
             console.log(values);
-
+         
           this.setState({
             successful: false,
             message: resMessage
           });
         // actions.isSubmitting= false;
-      });
+       });
      }} initialValues={{numsalle: '', etage: '',Organisation:'', capacite: '',Handicape: "false",DataShow: "false", Tableau: "false" }}
           validationSchema={this.userSchema}
         >
@@ -141,7 +148,7 @@ return(
                     defaultChecked={values.Handicape==="true"}
                   />
                     <label
-                   className="col-sm-3 d-inline w-25"
+                   className=" d-inline w-25"
                    htmlFor="false"
                   > Non
                   </label>             
@@ -166,7 +173,7 @@ return(
                     defaultChecked={values.DataShow==="true"}
                   />
                     <label
-                   className="col-sm-3 d-inline w-25"
+                   className=" d-inline w-25"
                    htmlFor="false"
                   > Non
                   </label>             
@@ -191,7 +198,7 @@ return(
                     defaultChecked={values.Tableau==="true"}
                   />
                     <label
-                   className="col-sm-3 d-inline w-25"
+                   className=" d-inline w-25"
                    htmlFor="false"
                   > Non
                   </label>             
@@ -227,7 +234,6 @@ return(
                 </div>
               </div>
             )}
-              
               <div className=" container-fluid   
                         d-flex flex-column justify-content-right  w-50">
                   <button type="submit" className="btn btn-primary w-25 " disabled={isSubmitting}>

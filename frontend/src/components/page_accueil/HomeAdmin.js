@@ -1,20 +1,20 @@
 import React from "react";
 import Footer from './Footer';
-import Agenda from "./Agenda";
+import Agenda from "../agenda/Vf_agenda";
 import RessourceList from "./RessourceList";
 import FilterBar from "./FilterBar";
 import AdminSearchAppBar from "./AdminSearchAppBar";
 
-
 function HomeAdmin() {
   return (
     <div>
-          <AdminSearchAppBar/>
-          <div style={{overflow: "hidden"}}>
+          <AdminSearchAppBar />
+        {/*<div style={{overflow: "hidden"}}>
           <RessourceList />
           <FilterBar />
-          <Agenda />
-          </div>
+
+          </div>*/}
+            <Agenda/>
           <Footer />
     </div>
   );

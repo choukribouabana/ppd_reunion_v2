@@ -13,14 +13,31 @@ import ListeSalle from './components/listesalle/Liste';
 import ListeReservation from './components/listereservation/Liste';
 import SignIn from './components/SignIn';
 import Ajoutreservation from './components/ajoutReservation/ajoutReservation';
+import ajoutReservationAdmin from './components/ajoutReservation/ajoutReservationAdmin';
+import AjoutreservationUser from './components/ajoutReservation/ajoutReservationUser';
 import AjoutSalle from'./components/ajoutsalle/AjoutSalle';
 import PageAccueil from "./components/page_accueil/page_accueil";
+import HomeAdmin from "./components/page_accueil/HomeAdmin";
+import HomeUser from "./components/page_accueil/HomeUser";
+import AdminSearchAppBar from "./components/page_accueil/AdminSearchAppBar"
+import UserSearchAppBar from "./components/page_accueil/UserSearchAppBar"
 import ListeUsers from './components/listeutilisateur/Liste';
 import Vf_agenda from './components/agenda/Vf_agenda';
 import GetReservations from "./GetReservations";
 import modifSalle from'./components/ajoutsalle/modifSalle';
 import AjoutUser from "./components/AjoutUser";
 import modifUser from'./components/modifUser';
+import User_accountAdmin from "./components/User_accountAdmin";
+import User_accountUser from "./components/User_accountUser";
+import AjoutSalleAdmin from "./components/ajoutsalle/AjoutSalleAdmin";
+import AjoutSalleUser from "./components/ajoutsalle/AjoutSalleUser";
+import Liste from "./components/listereservation/Liste";
+import ListeAdmin from "./components/listereservation/ListeAdmin";
+import ListeUser from "./components/listereservation/ListeUser";
+//import HomeAdmin from "./components/page_accueil/HomeAdmin";
+import Agenda from "./components/agenda/Vf_agenda";
+
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -51,17 +68,22 @@ class App extends Component {
 
   render() {
     const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
+    console.log(this.state.showAdminBoard);
+    console.log(this.state.showModeratorBoard);
+    console.log(this.state.currentUser);
 
     return (
-        <div>      
-           <BrowserRouter>
+        <div>  
+<BrowserRouter>
           <Switch>
             <Route exact path="/" component={SignIn} />
-            <Route exact path="/res" component={GetReservations} />
-            <Route exact path="/agenda" component={Vf_agenda} />
-            <Route exact path="/userAccount" component={User_account} />
-            <Route exact path="/ajoutSalle" component={AjoutSalle} />
+
+            {showAdminBoard ? (<Route exact path="/userAccount" component={User_accountAdmin} />) : (<Route exact path="/userAccount" component={User_accountUser} />)}
+            
+            {showAdminBoard ? (<Route exact path="/ajoutSalle" component={AjoutSalle} />) :(<Route exact path="/ajoutSalle" component={AjoutSalle} />)}
+
             <Route exact path="/users" component={ListeUsers} />
+
             <Route exact path="/listeSalle" component={ListeSalle} />
             <Route path="/ajoutReservation" component={Ajoutreservation} />
             <Route path="/listeReservation" component={ListeReservation} />
@@ -70,9 +92,18 @@ class App extends Component {
             <Route path="/signup" component={SignUp} />
             <Route path="/modif" component={modifSalle} />
             <Route path="/AjoutUser" component={AjoutUser} />
+            {/*<Route exact path="/agenda" component={Agenda} />*/}
+
+            { showAdminBoard ? (<Route path="/ajoutReservation" component={ajoutReservationAdmin} />) :(<Route path="/ajoutReservation" component={AjoutreservationUser} />)}
+
+            {showAdminBoard ? (<Route path="/listeReservation" component={ListeAdmin} />) : (<Route path="/listeReservation" component={ListeUser} />)}
+
+            {showAdminBoard ? (<Route path="/home" component={HomeAdmin} />) : (<Route path="/home" component={HomeUser} />) }
+            <Route path="/signup" component={SignUp} />
+            
+           
           </Switch>
           </BrowserRouter>
-
         </div>
     );
   }

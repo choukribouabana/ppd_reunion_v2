@@ -11,6 +11,10 @@ import Header from './header';
 import PrimarySearchAppBar from "../page_accueil/PrimarySearchAppBar";
 import authHeader from '../../services/auth-header';
 import SallesService from '../../services/salles.service';
+import AdminSearchAppBar from '../page_accueil/AdminSearchAppBar';
+
+
+
 
 class Liste extends Component {
 
@@ -50,8 +54,8 @@ render(){
 
   return (
     <div>
-        <PrimarySearchAppBar/>
-    <div className=" d-flex flex-column">
+      <PrimarySearchAppBar />
+      <div className="d-flex flex-column">
      <Header/>
      { this.state.loaded ? (<div className="d-flex flex-row flex-fill pt-1 p-2">
     <ListeSalle history={this.props.history} salles={this.state.salles}  updateSelectedSalle={ this.updateSelectedSalle } fet= {this.fetch}   />
