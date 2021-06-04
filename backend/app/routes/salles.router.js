@@ -2,7 +2,7 @@ const { authJwt } = require("../middlewares");
 const express = require("express");
 const controller = require("../controllers/salles.controller");
 var router = express.Router();
-
+const { verifySalle } = require("../middlewares");
  module.exports = function(app) {
     app.use(function(req, res, next) {
       res.header(
@@ -13,7 +13,7 @@ var router = express.Router();
     });
   
     app.get("/salles", (req, res, next) => {console.log("coucou");next()},[authJwt.verifyToken,authJwt.isAdmin] ,controller.getAll);
-    app.post("/salles",controller.addOne);  
+    app.post("/salles",[verifySalle.checkDuplicateSalle],controller.addOne);  
     app.delete("/salles",controller.deleteAll);
   
     app.get("/salles/:id",controller.getOne);

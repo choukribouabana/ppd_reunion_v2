@@ -27,5 +27,7 @@ module.exports = function(app) {
     controller.adminBoard
   );
   app.delete("/users/:id",controller.deleteOne);
+  app.put("/users/:id",controller.updateOne);
+    
     
 };

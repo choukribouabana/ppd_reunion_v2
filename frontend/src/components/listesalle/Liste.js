@@ -51,7 +51,7 @@ render(){
   return (
     <div>
         <PrimarySearchAppBar/>
-    <div className="App d-flex flex-column">
+    <div className=" d-flex flex-column">
      <Header/>
      { this.state.loaded ? (<div className="d-flex flex-row flex-fill pt-1 p-2">
     <ListeSalle history={this.props.history} salles={this.state.salles}  updateSelectedSalle={ this.updateSelectedSalle } fet= {this.fetch}   />

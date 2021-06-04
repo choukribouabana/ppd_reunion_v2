@@ -7,6 +7,9 @@ import Loading from './Loading';
 import axios from 'axios';
 import userService from '../../services/user.service';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import PrimarySearchAppBar from "../page_accueil/PrimarySearchAppBar";
+import AdminSearchAppBar from '../page_accueil/AdminSearchAppBar';
+
 
 class Liste extends Component {
  constructor(props){
@@ -41,14 +44,16 @@ updateSelectedUser = (index) => {
 
 render(){
   return (
-    <div className="App d-flex flex-column">
+    <div className=" d-flex flex-column">
+            <PrimarySearchAppBar/>
+  
         <div className="shadow-sm rounded  border mb-2 p-3 d-flex flex-row w-100 align-items-center bg-secondary ">
      <h5 className="p-1 col-sm-9 text-white"> Liste des utilisateurs </h5>
-     <Link className="btn btn-info btn-sm text-white" to="/signup">Ajouter un utilisateur</Link>
+     <Link className="btn btn-info btn-sm text-white" to="/AjoutUser">Ajouter un utilisateur</Link>
          </div>      
     
-     { this.state.loaded ? (<div className="d-flex flex-row flex-fill pt-1 p-2">
-    <ListeUtilisateur users={this.state.users} updateSelectedUser={ this.updateSelectedUser } fet= {this.fetch} />
+     { this.state.loaded && this.state.users.length>0 ? (<div className="d-flex flex-row flex-fill pt-1 p-2">
+    <ListeUtilisateur history={this.props.history} users={this.state.users} updateSelectedUser={ this.updateSelectedUser } fet= {this.fetch} />
     <DescUser user={this.state.users[this.state.selectedUser]} />
     </div>
     ) : (

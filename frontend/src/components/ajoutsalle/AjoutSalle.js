@@ -76,17 +76,33 @@ return(
        .then(response => {
          actions.setSubmitting(false);
          actions.resetForm();
-        //  console.log(values);
-        setTimeout( () => {
+         console.log(values);
+         this.setState({
+            message: response.data.message,
+            successful: true
+          });        setTimeout( () => {
           this.props.history.push("/listeSalle");
        // window.location.reload();
         
           }, 500);
         })
        .catch(error => {
-         actions.isSubmitting= false;
-       });
-     }} initialValues={{numsalle: '', etage: '', capacite: ''/*,Handicape: '',Equipement: ''*/ }}
+        const resMessage =
+            ( error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+            actions.resetForm();
+            console.log(values);
+
+          this.setState({
+            successful: false,
+            message: resMessage
+          });
+        // actions.isSubmitting= false;
+      });
+     }} initialValues={{numsalle: '', etage: '',Organisation:'', capacite: '',Handicape: "false",DataShow: "false", Tableau: "false" }}
           validationSchema={this.userSchema}
         >
           {({values,
@@ -103,13 +119,115 @@ return(
             <form onSubmit={handleSubmit} className="bg-white border p-4 d-flex flex-column">
             <div className="h4 d-flex justify-content-left "><span className="border-bottom p-2">Ajout d'une salle</span>  </div>
             
-              <Field name="numsalle" label="Numéro de la salle" onChange={handleChange} placeholder="0" autoFocus variant="outlined" component={ComposantInput} />
+              <Field type="number" name="numsalle" label="Numéro de la salle" onChange={handleChange} placeholder="0" autoFocus variant="outlined" component={ComposantInput} />
               <ErrorMessage name="numSalle" component={ComposantErreur} />
-              <Field name="etage" label="Etage" placeholder="0" onChange={handleChange} component={ComposantInput} />
+              <Field type="number" name="etage" label="Etage" placeholder="0" onChange={handleChange} component={ComposantInput} />
               <ErrorMessage name="etage" component={ComposantErreur} />
-              <Field name="capacite" label="Capacité" placeholder="0" onChange={handleChange} component={ComposantInput} />
+              <Field type="number" name="capacite" label="Capacité" placeholder="0" onChange={handleChange} component={ComposantInput} />
               <ErrorMessage name="capacite" component={ComposantErreur} />  
+              <Field type="text" name="Organisation" label="Organisation" placeholder="Organisation" onChange={handleChange} component={ComposantInput} />
+              <ErrorMessage name="Organisation" component={ComposantErreur} />  
+
+              <div className="row form-group p-1">
+               <label className="col-sm-3 d-inline w-25">place Handicapé</label>
+                 <div className="col-sm-3 d-inline w-25  ">
+                 <label
+                     className="d-inline col-sm-3 "
+                     htmlFor="true"
+                   >
+                     Oui
+                   </label>
+                 <input id="true" type="radio" value={true} name="Handicape" className="Handicape col-sm-9 w-25" onChange={handleChange}
+                    defaultChecked={values.Handicape==="true"}
+                  />
+                    <label
+                   className="col-sm-3 d-inline w-25"
+                   htmlFor="false"
+                  > Non
+                  </label>             
+                 <input id="false" type="radio" value={false} name='Handicape' className="Handicape col-sm-3 d-inline w-25"
+                    onChange={handleChange}
+                    defaultChecked={values.Handicape==="false"}
+                  />
+                  </div>
+                  </div>
+
+
+                  <div className="row form-group p-1">
+               <label className="col-sm-3 d-inline w-25">Data-Show</label>
+                 <div className="col-sm-3 d-inline w-25  ">
+                 <label
+                     className="d-inline col-sm-3 "
+                     htmlFor="datashow"
+                   >
+                     Oui
+                   </label>
+                 <input id="true" type="radio" value={true} name="DataShow" className="DataShow col-sm-9 w-25" onChange={handleChange}
+                    defaultChecked={values.DataShow==="true"}
+                  />
+                    <label
+                   className="col-sm-3 d-inline w-25"
+                   htmlFor="false"
+                  > Non
+                  </label>             
+                 <input id="false" type="radio" value={false} name='DataShow' className="DataShow col-sm-3 d-inline w-25"
+                    onChange={handleChange}
+                    defaultChecked={values.DataShow==="false"}
+                  />
+                  </div>
+                  </div>
+
+
+                  <div className="row form-group p-1">
+               <label className="col-sm-3 d-inline w-25">Tableau</label>
+                 <div className="col-sm-3 d-inline w-25  ">
+                 <label
+                     className="d-inline col-sm-3 "
+                     htmlFor="datashow"
+                   >
+                     Oui
+                   </label>
+                 <input id="true" type="radio" value={true} name="Tableau" className="Tableau col-sm-9 w-25" onChange={handleChange}
+                    defaultChecked={values.Tableau==="true"}
+                  />
+                    <label
+                   className="col-sm-3 d-inline w-25"
+                   htmlFor="false"
+                  > Non
+                  </label>             
+                 <input id="false" type="radio" value={false} name='Tableau' className="Tableau col-sm-3 d-inline w-25"
+                    onChange={handleChange}
+                    defaultChecked={values.Tableau==="false"}
+                  />
+                  </div>
+                  </div>
+
+
+
+
+
+
+
+
+
+
                <br></br>
+
+               {this.state.message && (
+              <div className="form-group">
+                <div
+                  className={
+                    this.state.successful
+                      ? "alert alert-success"
+                      : "alert alert-danger"
+                  }
+                  role="alert"
+                >
+                  {this.state.message}
+                </div>
+              </div>
+            )}
+              
               <div className=" container-fluid   
                         d-flex flex-column justify-content-right  w-50">
                   <button type="submit" className="btn btn-primary w-25 " disabled={isSubmitting}>
