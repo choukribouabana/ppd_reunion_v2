@@ -33,6 +33,8 @@ import AjoutSalleUser from "./components/ajoutsalle/AjoutSalleUser";
 import Liste from "./components/listereservation/Liste";
 import ListeAdmin from "./components/listereservation/ListeAdmin";
 import ListeUser from "./components/listereservation/ListeUser";
+import AjoutUser from "./components/AjoutUser";
+
 //import HomeAdmin from "./components/page_accueil/HomeAdmin";
 
 
@@ -88,6 +90,8 @@ class App extends Component {
             <Route path="/signup" component={SignUp} />
             <Route path="/modif" component={modifSalle} />
             <Route path="/modifUser" component={modifUser} />
+            <Route path="/AjoutUser" component={AjoutUser} />
+           
           </Switch>
           </BrowserRouter> 
          </div>

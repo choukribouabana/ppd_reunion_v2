@@ -4,10 +4,12 @@ const Schema = mongoose.Schema;
 const salleSchema = new Schema(
 {
 numsalle: { type: Number },
-description: { type: String },
+Organisation: { type: String },
 etage: { type: Number },
 capacite: { type: Number },
-year: { type: Number },
+Handicape: { type: String },
+DataShow: { type: String },
+Tableau: { type: String },
 },
 { collection: "salles", timestamps: true}
 );

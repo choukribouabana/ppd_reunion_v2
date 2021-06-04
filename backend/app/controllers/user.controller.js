@@ -6,7 +6,7 @@ var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
 exports.getAll = async (req, res, next) => {
-  let users = await User.find({});
+  let users = await User.find({}).populate("roles", "-__v");       
    res.json(users)
 };
 

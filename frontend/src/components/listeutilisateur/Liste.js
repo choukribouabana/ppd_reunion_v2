@@ -49,7 +49,7 @@ render(){
   
         <div className="shadow-sm rounded  border mb-2 p-3 d-flex flex-row w-100 align-items-center bg-secondary ">
      <h5 className="p-1 col-sm-9 text-white"> Liste des utilisateurs </h5>
-     <Link className="btn btn-info btn-sm text-white" to="/signup">Ajouter un utilisateur</Link>
+     <Link className="btn btn-info btn-sm text-white" to="/AjoutUser">Ajouter un utilisateur</Link>
          </div>      
     
      { this.state.loaded && this.state.users.length>0 ? (<div className="d-flex flex-row flex-fill pt-1 p-2">
