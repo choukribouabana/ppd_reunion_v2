@@ -88,7 +88,7 @@ class App extends Component {
             <Route path="/ajoutReservation" component={Ajoutreservation} />
             <Route path="/listeReservation" component={ListeReservation} />
             <Route path="/modifUser" component={modifUser} />
-            <Route path="/home" component={PageAccueil} />
+            {/*<Route path="/home" component={PageAccueil} />*/}
             <Route path="/signup" component={SignUp} />
             <Route path="/modif" component={modifSalle} />
             <Route path="/AjoutUser" component={AjoutUser} />
