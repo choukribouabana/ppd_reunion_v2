@@ -7,16 +7,14 @@ function User_account(){
     return(
         <div>
         <div className="container">
-
             <div className="main-body">
-
-                <nav aria-label="breadcrumb" className="main-breadcrumb">
+                {/*<nav aria-label="breadcrumb" className="main-breadcrumb">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item"><a href="index.html">Home</a></li>
                         <li className="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
                         <li className="breadcrumb-item active" aria-current="page">User Profile</li>
                     </ol>
-                </nav>
+                </nav>*/}
 
                 <div className="row gutters-sm">
                     <div className="col-md-4 mb-3">
@@ -35,7 +33,7 @@ function User_account(){
                                 </div>
                             </div>
                         </div>
-                        <div className="card mt-3">
+                        {/*<div className="card mt-3">
                             <ul className="list-group list-group-flush">
                                 <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                     <h6 className="mb-0">
@@ -106,7 +104,7 @@ function User_account(){
                                     <span className="text-secondary">bootdey</span>
                                 </li>
                             </ul>
-                        </div>
+                        </div>*/}
                     </div>
                     <div className="col-md-8">
                         <div className="card mb-3">
@@ -157,7 +155,7 @@ function User_account(){
                                 </div>
                             </div>
                         </div>
-                        <div className="row gutters-sm">
+                        {/*<div className="row gutters-sm">
                             <div className="col-sm-6 mb-3">
                                 <div className="card h-100">
                                     <div className="card-body">
@@ -234,7 +232,7 @@ function User_account(){
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>*/}
                     </div>
                 </div>
             </div>
