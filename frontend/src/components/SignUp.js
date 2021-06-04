@@ -102,7 +102,7 @@ return(
           this.props.history.push("/");
         window.location.reload();
         
-          }, 1500);
+          }, 500);
         
        })
        .catch(error => {
