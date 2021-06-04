@@ -177,7 +177,7 @@ export default function PrimarySearchAppBar() {
     <div className="">
       <ul className="d-flex  w-100">
       <li><Link className=" text-white" to="/home">Accueil</Link></li>
-  <li><Link className=" text-white" to="/listeReservation">Réservations</Link></li>
+        {/*<li><Link className=" text-white" to="/listeReservation">Réservations</Link></li>*/}
   <li>"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</li>
   
   <li><Link className=" text-white float-left" onClick={dec}  to="/">Deconnexion</Link></li>            
