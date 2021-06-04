@@ -38,7 +38,7 @@ var DEFAULT_ITEM = {
     var helper = null;
 
     const testt = function(){
-  alert("hello");
+  //alert("hello");
 };
     export {testt};
 
@@ -628,7 +628,7 @@ export default class ReactAgenda extends Component {
     if (this.props.onItemEdit) {
       this.props.onItemEdit(props, true);
     }
-    alert(props._id);
+    //alert(props._id);
 
     /*axios.put("http://localhost:8080/reservations/"+ props._id, props).then(res =>{
         alert(JSON.stringify(res));
@@ -645,7 +645,7 @@ export default class ReactAgenda extends Component {
     if (this.props.onItemRemove) {
       this.props.onItemRemove(newItems, item);
     }
-    alert(item._id);
+    //alert(item._id);
 
     axios.delete("http://localhost:8080/reservations/"+ item._id);
   }
