@@ -90,7 +90,7 @@ return(
             <div className="d-flex justify-content-center">
             <img alt="signup" className="mx-auto d-block w-50" src={logo} />  
             </div>
-            <Field name="email" label="Email" type="email" onChange={handleChange} placeholder="Votre Adreese Email"  component={ComposantInput} />
+            <Field name="email" label="Email" type="email" onChange={handleChange} placeholder="Votre Adresse Email"  component={ComposantInput} />
             <ErrorMessage name="email" component={ComposantErreur} />
         
             <Field name="password"  label="Mot de passe" type="password" onChange={handleChange} placeholder="Mot de Passe" component={ComposantInput} />

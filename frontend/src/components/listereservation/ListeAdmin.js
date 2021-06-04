@@ -44,8 +44,8 @@ render(){
     <div className="App d-flex flex-column">
         <div className="shadow-sm rounded  border mb-2 p-3 d-flex flex-row w-100 align-items-center bg-secondary ">
      <h5 className="p-1 col-sm-9 text-white"> Liste des réservations </h5>
-     <button className="btn btn-info btn-sm text-white" type="submit">Ajouter une réservation</button>
-         </div>      
+     
+         </div>
     
      { this.state.loaded ? (<div className="d-flex flex-row flex-fill pt-1 p-2">
     <ListeReservation reservations={this.state.Reservations} updateSelectedReservation={ this.updateSelectedReservation } />

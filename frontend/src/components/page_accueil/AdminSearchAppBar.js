@@ -175,8 +175,7 @@ export default function AdminSearchAppBar() {
       open={isMenuSalleOpen}
       onClose={handleMenuSalleClose}
     >
-      <MenuItem onClick={handleMenuSalleClose}><Link to="/ajoutSalle">Créer une salle</Link></MenuItem>
-      <MenuItem onClick={handleMenuSalleClose}><Link to="/listeSalle">Liste des salles</Link></MenuItem>
+    
     </Menu>
   );
 
@@ -258,9 +257,10 @@ export default function AdminSearchAppBar() {
               aria-label="account of current user"
               aria-controls={menuId}
               aria-haspopup="true"
+              onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <MenuItem onClick={handleMenuClose} style={{textDecoration:"none", fontSize:"30px"}}>Déconnexion</MenuItem>
+              <Link className=" text-white" to="/" style={{textDecoration:"none", fontSize:"30px"}}>Déconnexion</Link>
             </IconButton>
           </div>
         </Toolbar>
