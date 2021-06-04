@@ -8,6 +8,7 @@ import './reactAgendaCtrl.css';
 import axios from "axios";
 import AuthService from "../../../services/auth.service";
 import ReservationService from "../../../services/reservation.service";
+import SallesService from "../../../services/salles.service";
 
 var now = new Date();
 
@@ -16,6 +17,7 @@ export default class ReactAgendaCtrl extends Component {
   constructor() {
     super();
     this.state = {
+      listesalle: [],
       editMode: false,
       showCtrl: false,
       multiple: {},
@@ -31,9 +33,13 @@ export default class ReactAgendaCtrl extends Component {
     this.dispatchEvent = this.dispatchEvent.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleEdit = this.handleEdit.bind(this)
+    this.getSalle = this.getSalle.bind(this);
   }
 
   componentDidMount() {
+    SallesService.getlistesalle().then(res => {
+      this.setState({listesalle: res.data})
+    })
 
   if (this.props.itemColors) {
     this.setState({
@@ -91,7 +97,9 @@ export default class ReactAgendaCtrl extends Component {
   }
 
   handleChangeSalle(event) {
-    this.setState({salle: event.target.value});
+
+    this.setState({salle: parseInt(event.target.value, 10)});
+
   }
 
 
@@ -110,15 +118,17 @@ export default class ReactAgendaCtrl extends Component {
   async fun1(obj){
     var boool = false;
     await ReservationService.getlisteReservations().then(res => {
-      alert("inside");
       for (var i = res.data.length -1; i >=0 ; i--){
         if (Number(res.data[i].salle) === Number(obj.salle)){
-          if(obj.startDateTime > new Date(res.data[i].startDateTime) &&
-          obj.startDateTime < new Date(res.data[i].endDateTime)) {
+          if((obj.startDateTime > new Date(res.data[i].startDateTime) &&
+          obj.startDateTime < new Date(res.data[i].endDateTime)) || (obj.endDateTime > new Date(res.data[i].startDateTime) &&
+              obj.endDateTime < new Date(res.data[i].endDateTime)) || (obj.startDateTime < new Date(res.data[i].startDateTime) &&
+              obj.endDateTime > new Date(res.data[i].endDateTime))) {
             boool = true;
             alert("This is already a booking from "+res.data[i].startDateTime.toString()+
             " To : "+res.data[i].endDateTime.toString());
           }
+
         }
       }
     })
@@ -162,7 +172,6 @@ async dispatchEvent(obj) {
 
   const bl = await this.fun1(obj);
   if (!bl){
-    alert("mm");
     await this.fun2(obj);
     items.push(obj);
     this.props.Addnew(items, obj);
@@ -258,6 +267,18 @@ handleEdit(e) {
   e.preventDefault();
   this.updateEvent(e);
 }
+/*{SallesService.getlistesalle().then(res =>{
+  res.data.map(item => {
+<div>
+<div>je usi</div>
+<div>{item.numsalle}</div>
+</div>*/
+getSalle(){
+
+  SallesService.getlistesalle().then(res => {
+    this.setState({listesalle: res})
+  })
+}
 
 render() {
   var itc = Object.keys(this.props.itemColors)
@@ -277,16 +298,25 @@ render() {
     var select = this.props.selectedCells[0];
 
     return (
+
       <div className="agendCtrls-wrapper" style={divStyle}>
         <form onSubmit={this.handleEdit}>
           <div className="agendCtrls-label-wrapper">
             <div className="agendCtrls-label-inline">
               <label>Event name</label>
-              <input type="text" name="name" autoFocus ref="eventName" className="agendCtrls-event-input" value={this.state.name} onChange={this.handleChange.bind(this)} placeholder="Event Name"/>
+              <select name="salle" autoFocus ref="eventName" className="agendCtrls-event-input" value={this.state.salle} onChange={this.handleChangeSalle.bind(this)} placeholder="Salle">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value={this.state.listesalle[0].numsalle}>{this.state.listesalle[0].numsalle}</option>
+              </select>
             </div>
             <div className="agendCtrls-label-inline">
               <label>salle</label>
-              <input type="number" name="salle" autoFocus ref="eventName" className="agendCtrls-event-input" value={this.state.salle} onChange={this.handleChangeSalle.bind(this)} placeholder="Salle"/>
+              <select name="salle" autoFocus ref="eventName" className="agendCtrls-event-input" value={this.state.salle} onChange={this.handleChangeSalle.bind(this)} placeholder="Salle">
+                {this.state.listesalle.map(item => (
+                    <option className="agendCtrls-event-input" value={item.numsalle}>{item.numsalle}</option> ))
+                }
+              </select>
             </div>
 
             <div className="agendCtrls-label-inline ">
@@ -316,6 +346,18 @@ render() {
   return (
     <div className="agendCtrls-wrapper" style={divStyle}>
       <form onSubmit={this.handleSubmit}>
+        {/*<p>
+        {
+          this.state.listesalle.map(item => (
+              <div class="row padding">
+                <div class="alert alert-info rounded-pill" role="alert">
+                  <div>{item.numsalle}</div>
+                </div>
+              </div>
+          ))
+          JSON.stringify(this.state.listesalle[0])
+        }</p>*/}
+
         <div className="agendCtrls-label-wrapper">
           <div className="agendCtrls-label-inline">
             <label>Event name</label>
@@ -323,7 +365,11 @@ render() {
           </div>
           <div className="agendCtrls-label-inline">
             <label>salle</label>
-            <input type="number" name="salle" autoFocus ref="eventName" className="agendCtrls-event-input" value={this.state.salle} onChange={this.handleChangeSalle.bind(this)} placeholder="Salle"/>
+            <select name="salle" autoFocus ref="eventName" className="agendCtrls-event-input" value={this.state.salle} onChange={this.handleChangeSalle.bind(this)} placeholder="Salle">
+              {this.state.listesalle.map(item => (
+                  <option className="agendCtrls-event-input" value={item.numsalle}>{item.numsalle}</option> ))
+              }
+            </select>
           </div>
           <div className="agendCtrls-label-inline">
             <label>Color</label>

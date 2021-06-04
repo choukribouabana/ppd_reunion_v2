@@ -11,6 +11,8 @@ import Header from './header';
 import PrimarySearchAppBar from "../page_accueil/PrimarySearchAppBar";
 import authHeader from '../../services/auth-header';
 import SallesService from '../../services/salles.service';
+import AdminSearchAppBar from '../page_accueil/AdminSearchAppBar';
+import Footer from '../page_accueil/Footer';
 
 class Liste extends Component {
 
@@ -31,13 +33,11 @@ this.fetch();
   this.updateSelectedSalle(0);
   SallesService.getlistesalle().then(res => {
     //console.log(res.data);
-    this.setState({ 
+    this.setState({
     salles: res.data,
     loaded : true, });    
   });
 }
-
-
 
 updateSelectedSalle = (index) => {
  this.setState({
@@ -46,15 +46,16 @@ updateSelectedSalle = (index) => {
 }
 
 
+
 render(){
 
   return (
     <div>
-        <PrimarySearchAppBar/>
+      <AdminSearchAppBar />
     <div className="App d-flex flex-column">
      <Header/>
      { this.state.loaded ? (<div className="d-flex flex-row flex-fill pt-1 p-2">
-    <ListeSalle history={this.props.history} salles={this.state.salles}  updateSelectedSalle={ this.updateSelectedSalle } fet= {this.fetch}   />
+    <ListeSalle salles={this.state.salles} updateSelectedSalle={ this.updateSelectedSalle } fet= {this.fetch} />
     <DescSalle salle={this.state.salles[this.state.selectedSalle]}  />
     </div>
     
@@ -62,6 +63,7 @@ render(){
       <Loading />
     ) }
     </div>
+      <Footer />
     </div>
   );
 }

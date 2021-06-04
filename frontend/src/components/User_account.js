@@ -1,11 +1,11 @@
 import React, {Component} from "react";
 import "../styles/User_account.css";
+import Footer from "./page_accueil/Footer";
 import PrimarySearchAppBar from "./page_accueil/PrimarySearchAppBar";
 
 function User_account(){  
     return(
         <div>
-            <PrimarySearchAppBar/>
         <div className="container">
 
             <div className="main-body">
@@ -239,6 +239,7 @@ function User_account(){
                 </div>
             </div>
         </div>
+        <Footer />
         </div>
     )
 }

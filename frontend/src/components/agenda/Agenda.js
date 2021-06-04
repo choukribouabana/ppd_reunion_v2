@@ -108,7 +108,6 @@ this.handleCellSelection = this.handleCellSelection.bind(this)
                     mm ++;
                 }
             }
-            alert(mm);
             for (var i = 0; i < res.data.length; i++) {
                 res.data[i].startDateTime = new Date(res.data[i].startDateTime);
                 res.data[i].endDateTime = new Date(res.data[i].endDateTime);
