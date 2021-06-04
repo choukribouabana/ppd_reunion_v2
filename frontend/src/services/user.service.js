@@ -24,6 +24,9 @@ class UserService {
  getlisteuser(){
     return axios.get('http://localhost:8080/users', { headers: authHeader() } );
  }
+    getUser(params){
+        return axios.get('http://localhost:8080/users/'+params, { headers: authHeader() } );
+    }
  modifieuser(_id,values){
   return axios.put('http://localhost:8080/users/'+_id, values,{ headers: authHeader() });
 }
