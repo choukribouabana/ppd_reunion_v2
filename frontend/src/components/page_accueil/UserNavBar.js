@@ -175,7 +175,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className="">
-      <ul className="d-flex  w-100">
+      <ul className="d-flex  w-100" style={{fontSize:"19px"}}>
       <li><Link className=" text-white" to="/home">Accueil</Link></li>
   <li><Link className=" text-white" to="/listeReservation">Réservations</Link></li>
   <li>"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</li>
