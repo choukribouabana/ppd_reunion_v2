@@ -2,10 +2,31 @@ import React, {Component} from "react";
 import "../styles/User_account.css";
 import Footer from "./page_accueil/Footer";
 import PrimarySearchAppBar from "./page_accueil/PrimarySearchAppBar";
+import AuthService from "../services/auth.service";
+import UserService from "../services/user.service";
+import axios from "axios";
 
-function User_account(){  
+function User_account(){
+    const currentUser = AuthService.getCurrentUser();
     return(
         <div>
+            {/*<div>
+                {
+                    JSON.stringify(currentUser.id)
+                }
+            </div>
+            <div>
+                {
+                    axios.get("http://localhost:8080/users/"+currentUser.id).then(
+                        res => {
+                        res.data.map(item => {
+                            alert(item.username)
+                        })
+                    })
+
+                }
+
+            </div>*/}
         <div className="container">
             <div className="main-body">
                 {/*<nav aria-label="breadcrumb" className="main-breadcrumb">
@@ -26,9 +47,9 @@ function User_account(){
                                         <div className="mt-3">
                                             <h4>John Doe</h4>
                                             <p className="text-secondary mb-1">Full Stack Developer</p>
-                                            <p className="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-                                            <button className="btn btn-primary">Follow</button>
-                                            <button className="btn btn-outline-primary">Message</button>
+                                            {/*<p className="text-muted font-size-sm">Bay Area, San Francisco, CA</p>*/}
+                                            {/*<button className="btn btn-primary">Follow</button>
+                                            <button className="btn btn-outline-primary">Message</button>*/}
                                         </div>
                                 </div>
                             </div>
