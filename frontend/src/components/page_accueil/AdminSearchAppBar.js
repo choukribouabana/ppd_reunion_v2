@@ -258,7 +258,6 @@ export default function AdminSearchAppBar() {
               aria-label="account of current user"
               aria-controls={menuId}
               aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
               color="inherit"
             >
               <MenuItem onClick={handleMenuClose} style={{textDecoration:"none", fontSize:"30px"}}>Déconnexion</MenuItem>
