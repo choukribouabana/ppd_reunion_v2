@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component, useEffect, useState} from "react";
 import "../styles/User_account.css";
 import Footer from "./page_accueil/Footer";
 import PrimarySearchAppBar from "./page_accueil/PrimarySearchAppBar";
@@ -8,25 +8,20 @@ import axios from "axios";
 
 function User_account(){
     const currentUser = AuthService.getCurrentUser();
+    const [user, setUser] = useState([]);
+
+    useEffect(() => {
+        axios.get("http://localhost:8080/users/"+currentUser.id).then(
+            res => {
+                setUser(res.data);
+            }
+        )
+    });
+
     return(
+
         <div>
-            {/*<div>
-                {
-                    JSON.stringify(currentUser.id)
-                }
-            </div>
-            <div>
-                {
-                    axios.get("http://localhost:8080/users/"+currentUser.id).then(
-                        res => {
-                        res.data.map(item => {
-                            alert(item.username)
-                        })
-                    })
 
-                }
-
-            </div>*/}
         <div className="container">
             <div className="main-body">
                 {/*<nav aria-label="breadcrumb" className="main-breadcrumb">
@@ -45,8 +40,8 @@ function User_account(){
                                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
                                          className="rounded-circle" width="150"/>
                                         <div className="mt-3">
-                                            <h4>John Doe</h4>
-                                            <p className="text-secondary mb-1">Full Stack Developer</p>
+                                            <h4>{user.username}</h4>
+                                            <p className="text-secondary mb-1">{user.poste}</p>
                                             {/*<p className="text-muted font-size-sm">Bay Area, San Francisco, CA</p>*/}
                                             {/*<button className="btn btn-primary">Follow</button>
                                             <button className="btn btn-outline-primary">Message</button>*/}
@@ -135,7 +130,7 @@ function User_account(){
                                         <h6 className="mb-0">Full Name</h6>
                                     </div>
                                     <div className="col-sm-9 text-secondary">
-                                        Kenneth Valdez
+                                        {user.prenom +" "+ user.name}
                                     </div>
                                 </div>
                                 <hr/>
@@ -144,20 +139,19 @@ function User_account(){
                                         <h6 className="mb-0">Email</h6>
                                     </div>
                                     <div className="col-sm-9 text-secondary">
-                                        fip@jukmuh.al
+                                        {user.email}
                                     </div>
                                 </div>
                                 <hr/>
                                 <div className="row">
                                      <div className="col-sm-3">
-                                           <h6 className="mb-0">Phone</h6>
+                                           <h6 className="mb-0">Date de naissance</h6>
                                      </div>
                                      <div className="col-sm-9 text-secondary">
-                                         (239) 816-9029
+                                         {user.date}
                                      </div>
                                 </div>
-                                <hr/>
-                                <div className="row">
+                                {/*<div className="row">
                                     <div className="col-sm-3">
                                         <h6 className="mb-0">Mobile</h6>
                                     </div>
@@ -173,7 +167,7 @@ function User_account(){
                                     <div className="col-sm-9 text-secondary">
                                         Bay Area, San Francisco, CA
                                     </div>
-                                </div>
+                                </div>*/}
                             </div>
                         </div>
                         {/*<div className="row gutters-sm">
