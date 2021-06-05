@@ -10,6 +10,11 @@ exports.getAll = async (req, res, next) => {
    res.json(users)
 };
 
+exports.getOne = async (req, res, next) => {
+    let user = await User.findById(req.params.id);
+    res.json(user);
+}
+
 
 exports.allAccess = (req, res) => {
   res.status(200).send("Public Content.");

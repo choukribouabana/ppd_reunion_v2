@@ -181,7 +181,7 @@ export default function PrimarySearchAppBar() {
   <li><Link className=" text-white" to="/listeSalle">Salles</Link></li>
   <li><Link className=" text-white" to="/listeReservation">Réservations</Link></li>
 
-        <li>"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</li>
+        <li>"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</li>
         <li><Link className=" text-white" to="/userAccount">Profile</Link></li>
         <li><Link className=" text-white float-left" onClick={dec}  to="/">Deconnexion</Link></li>
 </ul>
