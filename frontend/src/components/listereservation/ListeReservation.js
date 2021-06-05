@@ -8,26 +8,26 @@ export default class ListeReservation extends React.Component {
              <thead className="table-light"  >
                  <tr className="p-1 m-1 ">
                      <th className=" p-1 m-1 ">
-                        idReservation
+                        name
                      </th>
                      <th className=" p-1 m-1 ">
-                        FullName
+                        salle
                      </th>
                      <th className=" p-1 m-1 ">
-                        NumSalle
+                        starttime
                      </th>
                      <th className=" p-1 m-1 " >
-                        Date
+                        endtime
                      </th>
                     
                      <th  className=" p-1 m-1 " >
-                        Heure
+                        user
                      </th>
                  </tr>
              </thead>
               <tbody>                               
              { this.props.reservations.map( (m , index) => (
-             <Reservation key= { m.idReservation + index} reservation= { m } updateSelectedReservation={ () => {this.props.updateSelectedReservation(index)} } /> 
+             <Reservation key= { m._id + index} reservation= { m } fet= {this.props.fet} updateSelectedReservation={ () => {this.props.updateSelectedReservation(index)} } />
              ))}  
              </tbody>
         </table>
