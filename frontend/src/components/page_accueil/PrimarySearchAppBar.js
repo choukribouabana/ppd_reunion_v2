@@ -179,7 +179,7 @@ export default function PrimarySearchAppBar() {
       <li><Link className=" text-white" to="/home">Accueil</Link></li>
   <li><Link className=" text-white" to="/users">Utilisateurs</Link></li>
   <li><Link className=" text-white" to="/listeSalle">Salles</Link></li>
-  <li><Link className=" text-white" to="/listeReservation">Réservations</Link></li>
+  <li><Link className=" text-white" to="/allReservations">Voir toutes les Réservations</Link></li>
 
         <li>"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</li>
         <li><Link className=" text-white" to="/userAccount">Profile</Link></li>

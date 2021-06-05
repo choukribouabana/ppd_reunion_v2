@@ -37,7 +37,7 @@ import ListeUser from "./components/listereservation/ListeUser";
 //import HomeAdmin from "./components/page_accueil/HomeAdmin";
 import Agenda from "./components/agenda/Vf_agenda";
 import PrimarySearchAppBar from "./components/page_accueil/PrimarySearchAppBar";
-
+import Admin_agenda from "./components/agenda/Admin_agenda";
 
 class App extends Component {
   constructor(props) {
@@ -93,6 +93,7 @@ class App extends Component {
             {/*<Route path="/home" component={PageAccueil} />*/}
             <Route path="/signup" component={SignUp} />
             <Route path="/modif" component={modifSalle} />
+            <Route path="/allReservations" component={Admin_agenda} />
             <Route path="/AjoutUser" component={AjoutUser} />
             {/*<Route exact path="/agenda" component={Agenda} />*/}
 
