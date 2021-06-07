@@ -14,7 +14,7 @@ export default class DescSalle extends React.Component {
             <div className="w-25 bg-light p-4 d-flex flex-column position-fixed top-1 end-0 shadow-sm ">
             <h5>Salle { this.props.salle.numsalle}  </h5>
            <hr className="w-100"/>
-            <h6> Déscription</h6>
+            <h6> Description</h6>
             <hr className="w-100"/>
             <span className="text-secondary p-1">Organization: {this.props.salle.Organisation} </span>
             <span className="text-secondary p-1">Etage: {this.props.salle.etage}</span>
