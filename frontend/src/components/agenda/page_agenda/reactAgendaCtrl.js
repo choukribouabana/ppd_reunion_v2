@@ -126,8 +126,14 @@ export default class ReactAgendaCtrl extends Component {
               obj.endDateTime < new Date(res.data[i].endDateTime)) || (obj.startDateTime < new Date(res.data[i].startDateTime) &&
               obj.endDateTime > new Date(res.data[i].endDateTime))) {
             boool = true;
-            alert("This is already a booking from "+res.data[i].startDateTime.toString()+
-            " To : "+res.data[i].endDateTime.toString());
+            /*alert("This is already a booking from "+res.data[i].startDateTime.toString()+
+            " To : "+res.data[i].endDateTime.toString());*/
+
+            alert("La salle est déja reservée du :\n"+
+                res.data[i].startDateTime.toString().substring(0,19).replace("T", " ")+
+            "\nAu "+ res.data[i].endDateTime.toString().substring(0,19).replace("T", " ")
+            )
+
           }
 
         }
