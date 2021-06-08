@@ -49,6 +49,10 @@ cd backend
 ```sh
 npm install
 ```
+Remonter d'un niveau avec 
+```sh
+cd ..
+```
 Puis placez vous dans le dossier frontend avec :
 ```sh
 cd frontend
