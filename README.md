@@ -71,7 +71,7 @@ cd backend
 ```sh
 cd frontend 
 ```
-Puis lancer la commande suivante dans les deux terminaux
+Puis lancer la commande suivante dans les deux terminaux ( afin de lancer le backend et le frontend en même temps )
 ```sh
 npm start
 ```
